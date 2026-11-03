@@ -1,0 +1,28 @@
+name: Verify ledger
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Hash chain
+        run: python3 tools/verify_ledger.py
+      - name: Append-only (previous ledger is a byte prefix of this one)
+        if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+        run: |
+          git show ${{ github.event.before }}:ledger/editions.jsonl > /tmp/prev.jsonl 2>/dev/null || : > /tmp/prev.jsonl
+          head -c "$(wc -c < /tmp/prev.jsonl)" ledger/editions.jsonl | cmp - /tmp/prev.jsonl
+      - name: Edition integrity (manifest hashes match archived files)
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, sys
+          bad = 0
+          for m in pathlib.Path("editions").glob("*/manifest.json"):
+              man = json.load(open(m)); d = m.parent
+              for f, rec in man["published_assets"].items():
+                  h = hashlib.sha256((d / f).read_bytes()).hexdigest()
+                  if h != rec["sha256"]: print("MISMATCH", d / f); bad += 1
+              if d.name != man["version"]: print("DIR/VERSION MISMATCH", d); bad += 1
+          print("editions checked:", len(list(pathlib.Path("editions").glob("*/manifest.json")))); sys.exit(1 if bad else 0)
+          PY

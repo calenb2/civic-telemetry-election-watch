@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1211.824000 2295.524000 296.352000 296.352000"><defs><mask id="ink" maskUnits="userSpaceOnUse" x="1211.824000" y="2295.524000" width="296.352000" height="296.352000" style="mask-type:luminance"><g fill="#fff">
+    <g>
+      <g>
+        <line x1="1277.8" y1="2495.6" x2="1277.8" y2="2550.4" stroke-linejoin="round" stroke="#fff" fill="none" stroke-width="41.9px" />
+        <line x1="1405.9" y1="2464.2" x2="1405.9" y2="2550.4" stroke-linejoin="round" stroke="#fff" fill="none" stroke-width="41.9px" />
+        <line x1="1341.8" y1="2417.2" x2="1341.8" y2="2550.4" stroke-linejoin="round" stroke="#fff" fill="none" stroke-width="41.9px" />
+        <line x1="1469.9" y1="2378.2" x2="1469.9" y2="2550.4" stroke-linejoin="round" stroke="#fff" fill="none" stroke-width="41.9px" />
+        <polyline points="1230.4 2314.1 1230.4 2573.3 1489.6 2573.3" stroke-linejoin="round" stroke="#fff" fill="none" stroke-linecap="round" stroke-width="15.2px" />
+        <line x1="1341.8" y1="2373.6" x2="1277.8" y2="2452" stroke-linejoin="round" stroke="#fff" fill="none" stroke-linecap="round" stroke-width="11.4px" />
+        <line x1="1341.8" y1="2373.6" x2="1405.9" y2="2420.6" stroke-linejoin="round" stroke="#fff" fill="none" stroke-linecap="round" stroke-width="11.4px" />
+        <line x1="1469.9" y1="2334.6" x2="1405.9" y2="2420.6" stroke-linejoin="round" stroke="#fff" fill="none" stroke-linecap="round" stroke-width="11.4px" />
+        <path d="M1483.8,2342.9" stroke-linejoin="round" stroke="#fff" fill="none" stroke-width="7.6px" stroke-linecap="round" />
+        <circle cx="1469.9" cy="2334.6" r="18.5" stroke-linejoin="round" stroke="#fff" stroke-width="7.6px" stroke-linecap="round" />
+        <circle cx="1405.9" cy="2420.6" r="18.5" stroke-linejoin="round" stroke="#fff" stroke-width="7.6px" stroke-linecap="round" />
+        <circle cx="1341.8" cy="2373.6" r="18.5" stroke-linejoin="round" stroke="#fff" stroke-width="7.6px" stroke-linecap="round" />
+        <circle cx="1277.8" cy="2452" r="18.5" stroke-linejoin="round" stroke="#fff" stroke-width="7.6px" stroke-linecap="round" />
+      </g>
+    </g>
+  </g>
+  </mask></defs><rect x="1211.824000" y="2295.524000" width="296.352000" height="296.352000" fill="#c9b57b" mask="url(#ink)" /></svg>

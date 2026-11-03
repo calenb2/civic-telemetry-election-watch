@@ -1,0 +1,321 @@
+domain,url,format_guess,refs_in_edition,scope,first_json_path,capture_status
+254labs.io,https://254labs.io/news/2026-10-tx,other,1,254 Labs / YouGov Blue,$.polls[6].source,not_captured
+appfiles.harrisvotes.com,https://appfiles.harrisvotes.com/harrisvotes/prd/docs/Uploads/EVPA_unofficial.pdf,pdf,219,Harris,$.counties[3].latest.source,not_captured
+chatgpt.com,https://chatgpt.com/c/6ae14711-defc-83ea-b84a-a551c192eb90?messageId=d2eeb165-5ccc-5da9-9d40-fcf6f0a8e2e7,other,1,,$.coverage.recovery_log[0].original_run_evidence,not_captured
+co.burleson.tx.us,http://co.burleson.tx.us/government/elections/,html,1,Burleson,$.coverage.counties[25].source_map.county_website,not_captured
+co.chambers.tx.us,http://co.chambers.tx.us/default.aspx?name=elections,other,1,Chambers,$.coverage.counties[35].source_map.county_website,not_captured
+co.ellis.tx.us,http://co.ellis.tx.us/index.asp?nid=312,other,1,Ellis,$.coverage.counties[69].source_map.county_website,not_captured
+co.floyd.tx.us,http://co.floyd.tx.us/,html,1,Floyd,$.coverage.counties[76].source_map.county_website,not_captured
+co.maverick.tx.us,https://co.maverick.tx.us/,html,1,Maverick,$.coverage.counties[161].source_map.county_website,not_captured
+co.menard.tx.us,http://co.menard.tx.us/,html,1,Menard,$.coverage.counties[163].source_map.county_website,not_captured
+co.wise.tx.us,http://co.wise.tx.us/,html,1,Wise,$.coverage.counties[248].source_map.county_website,not_captured
+corporate.televisaunivision.com,https://corporate.televisaunivision.com/press/2026/10/27/n-univision-poll-finds-texas-races-close-while-hispanic-voters-favor-democrats-in-governor-senate-and-house-contests/,html,1,Univision / YouGov,$.polls[5].source,not_captured
+d3nkl3psvxxpe9.cloudfront.net,https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_tx_20261026_lv.pdf,pdf,1,YouGov,$.polls[12].source,not_captured
+earlyvotecounts.bexar.org,https://earlyvotecounts.bexar.org/,html,173,Bexar,$.counties[4].latest.source,not_captured
+earlyvoting.texas-election.com,https://earlyvoting.texas-election.com/Elections/getElectionDetails.do,other,260,Anderson,$.coverage.counties[0].source_map.state_turnout_portal,not_captured
+elections.mctx.org,https://elections.mctx.org/,html,31,Montgomery,$.counties[11].latest.sources[1].url,not_captured
+elections.mctx.org,https://elections.mctx.org/pdf/GEN110326/rptEVDaily.pdf?ts=92647,other,36,Montgomery,$.counties[11].latest.source,not_captured
+elections.mywoodcounty.com,http://elections.mywoodcounty.com/,html,1,Wood,$.coverage.counties[249].source_map.county_website,not_captured
+emersoncollegepolling.com,https://emersoncollegepolling.com/texas-2026-poll-toss-up/,html,1,Emerson,$.polls[2].source,not_captured
+ep-county-elections-production.s3.amazonaws.com,https://ep-county-elections-production.s3.amazonaws.com/documents/files/000/006/883/original/Nov_2026_stats_Mail_Sunday.pdf?1793033687=,other,4,El Paso,$.counties[5].previous_official_observation.mail_source,not_captured
+ep-county-elections-production.s3.amazonaws.com,https://ep-county-elections-production.s3.amazonaws.com/documents/files/000/006/884/original/Nov_2026_stats_Sun.pdf?1793033687=,other,4,El Paso,$.counties[5].previous_official_observation.source,not_captured
+ep-county-elections-production.s3.amazonaws.com,https://ep-county-elections-production.s3.amazonaws.com/documents/files/000/006/891/original/Nov_2026_stats_mail_mon.pdf?1793122817=,other,15,El Paso,$.counties[5].official_observation_history[0].mail_source,not_captured
+ep-county-elections-production.s3.amazonaws.com,https://ep-county-elections-production.s3.amazonaws.com/documents/files/000/006/892/original/Nov_2026_stats_mon.pdf?1793122817=,other,34,El Paso,$.counties[5].official_observation_history[0].source,not_captured
+ep-county-elections-production.s3.amazonaws.com,https://ep-county-elections-production.s3.amazonaws.com/documents/files/000/006/911/original/Nov_2026_stats_last.pdf?1793467363=,other,38,El Paso,$.counties[5].latest.source,not_captured
+ep-county-elections-production.s3.amazonaws.com,https://ep-county-elections-production.s3.amazonaws.com/documents/files/000/006/912/original/Nov_2026_stats_mail_last.pdf?1793467363=,other,16,El Paso,$.counties[5].latest.mail_source,not_captured
+epcountyvotes.com,https://epcountyvotes.com/,html,1,El Paso,$.coverage.counties[70].source_map.county_website,not_captured
+epcountyvotes.com,https://epcountyvotes.com/quick-links/early-voting-statistics,other,28,El Paso,$.coverage.counties[70].source_review_log[1].url,not_captured
+fundvoter.org,https://fundvoter.org/early-voting/2026/TX,other,1,,$.coverage.third_party_leads[0].source_url,not_captured
+goelect.txelections.civixapps.com,https://goelect.txelections.civixapps.com/ivis-evr-ui/,html,2,,$.coverage.run_log[4].failures[4].url,not_captured
+goelect.txelections.civixapps.com,https://goelect.txelections.civixapps.com/ivis-evr-ui/evr,other,275,Anderson,$.coverage.counties[0].source_map.current_state_turnout_portal,not_captured
+grimescountytexas.gov,https://grimescountytexas.gov/,html,1,Grimes,$.coverage.counties[92].source_map.county_website,not_captured
+harrisoncountytexas.org,http://harrisoncountytexas.org/?page_id=1224,other,1,Harrison,$.coverage.counties[101].source_map.county_website,not_captured
+jefferson-tx.connect4.clarityelections.com,http://jefferson-tx.connect4.clarityelections.com/,html,1,Jefferson,$.coverage.counties[122].source_map.county_website,not_captured
+onpointpolitics.substack.com,https://onpointpolitics.substack.com/p/texas-poll-talarico-leads-paxton-bf8,other,1,On Point,$.polls[9].source,not_captured
+parmercounty.texas.gov,https://parmercounty.texas.gov/?page_id=334,other,1,Parmer,$.coverage.counties[184].source_map.county_website,not_captured
+quantusinsights.org,https://quantusinsights.org/f/texas-survey-paxton-up-one-abbott-ahead-by-five,other,1,Quantus,$.polls[10].source,not_captured
+services3.arcgis.com,https://services3.arcgis.com/zqe2kwz79KUqUvxC/arcgis/rest/services/Vote_Center_Finder_view/FeatureServer/4,arcgis-json,35,Dallas,$.counties[0].previous_official_observation.source,not_captured
+services3.arcgis.com,https://services3.arcgis.com/zqe2kwz79KUqUvxC/arcgis/rest/services/Vote_Center_Finder_view/FeatureServer/4/query?f=json&where=L_Crnt_Sta+%3D+%27Active%27+AND+L_Poll_Typ+%3D+%27EV%27&outFields=C_Daily_Tot%2CC_Tot_Vts&returnGeometry=false,arcgis-json,111,Dallas,$.counties[0].latest.source,not_captured
+sri.siena.edu,https://sri.siena.edu/2026/11/01/nytimes-siena-poll-of-likely-voters-alaska-iowa-kansas-maine-michigan-ohio-and-texas/,html,1,NYT / Siena,$.polls[13].source,not_captured
+static.foxnews.com,https://static.foxnews.com/foxnews.com/content/uploads/2026/10/fox_october-15-19-2026_texas_topline_october-21-release.pdf,pdf,1,Fox / Beacon–Shaw,$.polls[3].source,not_captured
+texaspolitics.utexas.edu,https://texaspolitics.utexas.edu/files/202610_POLL_TOPLINE-76f91287.pdf,pdf,1,UT / Texas Politics,$.polls[0].source,not_captured
+texaspublicopinionresearch.substack.com,https://texaspublicopinionresearch.substack.com/p/october-poll-in-texas-general-election,other,1,TPOR,$.polls[4].source,not_captured
+theoelections.com,https://theoelections.com/early-vote,other,509,,$.composition.source,not_captured
+tx-mclennancounty.civicplus.com,https://tx-mclennancounty.civicplus.com/DocumentCenter/View/18981/EV-Turnout-Totals,other,36,McLennan,$.counties[14].latest.source,not_captured
+updates.electionlink.net,https://updates.electionlink.net/widgets/ellistx/2026-11-03/Early%20Voting%20Dashboard.html,html,6,Ellis,$.counties[12].latest.source_evidence.official_endorsement_chain[2].to_url,not_captured
+updates.electionlink.net,https://updates.electionlink.net/widgets/travistx/2024-11-05/BallotTypeTurnout.html,html,1,,$.history.Travis[4].denominator_source,not_captured
+updates.electionlink.net,https://updates.electionlink.net/widgets/travistx/2024-11-05/EarlyVotingTable.html,html,1,,$.history.Travis[4].source,not_captured
+updates.electionlink.net,https://updates.electionlink.net/widgets/travistx/2026-11-03/BallotTypeTurnout.html,html,164,Travis,$.counties[2].latest.registered_source,not_captured
+updates.electionlink.net,https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html,html,297,Travis,$.counties[2].latest.source,not_captured
+votetravis.gov,https://votetravis.gov,other,1,Travis,$.coverage.counties[226].source_map.county_website,not_captured
+wichitacountytx.com,https://wichitacountytx.com/elections/,html,1,Wichita,$.coverage.counties[242].source_map.county_website,not_captured
+www.activote.net,https://www.activote.net/polls/2026/tx-governor/,html,1,ActiVote,$.polls[8].governor_source,not_captured
+www.activote.net,https://www.activote.net/polls/2026/tx-u-s-senate/,html,1,ActiVote,$.polls[8].source,not_captured
+www.activote.net,https://www.activote.net/trust/aapor/,html,1,ActiVote,$.polls[8].methodology_urls[1],not_captured
+www.activote.net,https://www.activote.net/trust/methodology/,html,1,ActiVote,$.polls[8].methodology_urls[0],not_captured
+www.angelinacounty.net,http://www.angelinacounty.net/departments/tax,other,1,Angelina,$.coverage.counties[2].source_map.county_website,not_captured
+www.aransascountytx.gov,http://www.aransascountytx.gov/clerk/voteelectinfo.php,other,1,Aransas,$.coverage.counties[3].source_map.county_website,not_captured
+www.atascosacounty.texas.gov,https://www.atascosacounty.texas.gov/page/atascosa.Elections,other,1,Atascosa,$.coverage.counties[6].source_map.county_website,not_captured
+www.austincounty.com,http://www.austincounty.com/,html,1,Austin,$.coverage.counties[7].source_map.county_website,not_captured
+www.banderacounty.org,https://www.banderacounty.org/page/homepage,other,1,Bandera,$.coverage.counties[9].source_map.county_website,not_captured
+www.bastropvotes.org,http://www.bastropvotes.org/,html,1,Bastrop,$.coverage.counties[10].source_map.county_website,not_captured
+www.bellcountytx.com,http://www.bellcountytx.com/departments/elections/,html,1,Bell,$.coverage.counties[13].source_map.county_website,not_captured
+www.bellcountytx.com,https://www.bellcountytx.com/departments/elections/daily_early_voting_reports.php,other,16,Bell,$.coverage.counties[13].source_review_log[0].sources[0],not_captured
+www.bellcountytx.com,https://www.bellcountytx.com/elections/Daily%20Postings/20261026.PDF?t=202610262040140,other,1,Bell,$.coverage.counties[13].source_review_log[0].detail.retrieval_failures[1].url,not_captured
+www.bellcountytx.com,https://www.bellcountytx.com/elections/Daily%20Postings/20261027.PDF?t=202610272031300,other,10,Bell,$.coverage.counties[13].source_review_log[0].detail.official_endorsement_chain[0].to_url,not_captured
+www.bexar.org,http://www.bexar.org/elections/index.html,html,1,Bexar,$.coverage.counties[14].source_map.county_website,not_captured
+www.bosquecounty.us,http://www.bosquecounty.us/,html,1,Bosque,$.coverage.counties[17].source_map.county_website,not_captured
+www.brazoriacountyclerktx.gov,https://www.brazoriacountyclerktx.gov/departments/elections,other,1,Brazoria,$.coverage.counties[19].source_map.county_website,not_captured
+www.brazosvotes.org,http://www.brazosvotes.org/,html,1,Brazos,$.coverage.counties[20].source_map.county_website,not_captured
+www.brewstercounty.gov,https://www.brewstercounty.gov/,html,1,Brewster,$.coverage.counties[21].source_map.county_website,not_captured
+www.browncountytx.org,http://www.browncountytx.org/default.aspx?Brown_County/Elections,other,1,Brown,$.coverage.counties[24].source_map.county_website,not_captured
+www.burnetcountytexas.org,http://www.burnetcountytexas.org/default.aspx?name=elect.home,other,1,Burnet,$.coverage.counties[26].source_map.county_website,not_captured
+www.calhouncotx.org,https://www.calhouncotx.org/calhoun-county-elections/,html,1,Calhoun,$.coverage.counties[28].source_map.county_website,not_captured
+www.cameroncountytx.gov,https://www.cameroncountytx.gov/elections/,html,1,Cameron,$.coverage.counties[30].source_map.county_website,not_captured
+www.claycountytx.net,https://www.claycountytx.net/,html,1,Clay,$.coverage.counties[38].source_map.county_website,not_captured
+www.co.anderson.tx.us,http://www.co.anderson.tx.us/default.aspx?Anderson_County/Elections,other,1,Anderson,$.coverage.counties[0].source_map.county_website,not_captured
+www.co.andrews.tx.us,https://www.co.andrews.tx.us/190/Elections-Department,other,1,Andrews,$.coverage.counties[1].source_map.county_website,not_captured
+www.co.archer.tx.us,http://www.co.archer.tx.us/,html,1,Archer,$.coverage.counties[4].source_map.county_website,not_captured
+www.co.armstrong.tx.us,http://www.co.armstrong.tx.us/default.aspx?Armstrong_County/Home,other,1,Armstrong,$.coverage.counties[5].source_map.county_website,not_captured
+www.co.bailey.tx.us,http://www.co.bailey.tx.us/,html,1,Bailey,$.coverage.counties[8].source_map.county_website,not_captured
+www.co.baylor.tx.us,https://www.co.baylor.tx.us/page/baylor.Elections,other,1,Baylor,$.coverage.counties[11].source_map.county_website,not_captured
+www.co.bee.tx.us,http://www.co.bee.tx.us/,html,1,Bee,$.coverage.counties[12].source_map.county_website,not_captured
+www.co.blanco.tx.us,http://www.co.blanco.tx.us/,html,1,Blanco,$.coverage.counties[15].source_map.county_website,not_captured
+www.co.borden.tx.us,http://www.co.borden.tx.us/default.aspx?Borden_County/Home,other,1,Borden,$.coverage.counties[16].source_map.county_website,not_captured
+www.co.bowie.tx.us,http://www.co.bowie.tx.us/default.aspx?Bowie_County/Elections,other,1,Bowie,$.coverage.counties[18].source_map.county_website,not_captured
+www.co.briscoe.tx.us,http://www.co.briscoe.tx.us/,html,1,Briscoe,$.coverage.counties[22].source_map.county_website,not_captured
+www.co.brooks.tx.us,http://www.co.brooks.tx.us/,html,1,Brooks,$.coverage.counties[23].source_map.county_website,not_captured
+www.co.caldwell.tx.us,https://www.co.caldwell.tx.us/page/ElectionsOffice,other,1,Caldwell,$.coverage.counties[27].source_map.county_website,not_captured
+www.co.callahan.tx.us,http://www.co.callahan.tx.us/,html,1,Callahan,$.coverage.counties[29].source_map.county_website,not_captured
+www.co.camp.tx.us,http://www.co.camp.tx.us/default.aspx?Camp_County/Elections,other,1,Camp,$.coverage.counties[31].source_map.county_website,not_captured
+www.co.carson.tx.us,http://www.co.carson.tx.us/default.aspx?Carson_County/Home,other,1,Carson,$.coverage.counties[32].source_map.county_website,not_captured
+www.co.cass.tx.us,http://www.co.cass.tx.us/default.aspx?Cass_County/Elections,other,1,Cass,$.coverage.counties[33].source_map.county_website,not_captured
+www.co.castro.tx.us,http://www.co.castro.tx.us/,html,1,Castro,$.coverage.counties[34].source_map.county_website,not_captured
+www.co.cherokee.tx.us,http://www.co.cherokee.tx.us/ips/cms/othercountyoffices/elections.html,html,1,Cherokee,$.coverage.counties[36].source_map.county_website,not_captured
+www.co.cochran.tx.us,http://www.co.cochran.tx.us/default.aspx?Cochran_County/Elections,other,1,Cochran,$.coverage.counties[39].source_map.county_website,not_captured
+www.co.coke.tx.us,http://www.co.coke.tx.us/,html,1,Coke,$.coverage.counties[40].source_map.county_website,not_captured
+www.co.coleman.tx.us,http://www.co.coleman.tx.us/default.aspx?Coleman_County/Elections,other,1,Coleman,$.coverage.counties[41].source_map.county_website,not_captured
+www.co.collingsworth.tx.us,http://www.co.collingsworth.tx.us/,html,1,Collingsworth,$.coverage.counties[43].source_map.county_website,not_captured
+www.co.colorado.tx.us,http://www.co.colorado.tx.us/default.aspx?Colorado_County/County.Clerk,other,1,Colorado,$.coverage.counties[44].source_map.county_website,not_captured
+www.co.comal.tx.us,https://www.co.comal.tx.us/Elections.htm,other,1,Comal,$.coverage.counties[45].source_map.county_website,not_captured
+www.co.concho.tx.us,http://www.co.concho.tx.us/default.aspx?Concho_County/Elections,other,1,Concho,$.coverage.counties[47].source_map.county_website,not_captured
+www.co.cooke.tx.us,http://www.co.cooke.tx.us/page/cooke.elections,other,1,Cooke,$.coverage.counties[48].source_map.county_website,not_captured
+www.co.cottle.tx.us,http://www.co.cottle.tx.us/,html,1,Cottle,$.coverage.counties[50].source_map.county_website,not_captured
+www.co.crane.tx.us,http://www.co.crane.tx.us/,html,1,Crane,$.coverage.counties[51].source_map.county_website,not_captured
+www.co.crosby.tx.us,http://www.co.crosby.tx.us/,html,1,Crosby,$.coverage.counties[53].source_map.county_website,not_captured
+www.co.culberson.tx.us,http://www.co.culberson.tx.us/,html,1,Culberson,$.coverage.counties[54].source_map.county_website,not_captured
+www.co.dawson.tx.us,http://www.co.dawson.tx.us/,html,1,Dawson,$.coverage.counties[57].source_map.county_website,not_captured
+www.co.deaf-smith.tx.us,http://www.co.deaf-smith.tx.us/default.aspx?Deaf-Smith_County/County.Clerk,other,1,Deaf Smith,$.coverage.counties[58].source_map.county_website,not_captured
+www.co.dewitt.tx.us,http://www.co.dewitt.tx.us/,html,1,DeWitt,$.coverage.counties[61].source_map.county_website,not_captured
+www.co.dickens.tx.us,http://www.co.dickens.tx.us/,html,1,Dickens,$.coverage.counties[62].source_map.county_website,not_captured
+www.co.donley.tx.us,http://www.co.donley.tx.us/default.aspx?Donley_County/Elections,other,1,Donley,$.coverage.counties[64].source_map.county_website,not_captured
+www.co.duval.tx.us,https://www.co.duval.tx.us/,html,1,Duval,$.coverage.counties[65].source_map.county_website,not_captured
+www.co.ector.tx.us,http://www.co.ector.tx.us/default.aspx?Ector_County/Elections,other,1,Ector,$.coverage.counties[67].source_map.county_website,not_captured
+www.co.edwards.tx.us,https://www.co.edwards.tx.us/page/edwards.electionsnew,other,1,Edwards,$.coverage.counties[68].source_map.county_website,not_captured
+www.co.erath.tx.us,https://www.co.erath.tx.us/186/Current-Elections,other,1,Erath,$.coverage.counties[71].source_map.county_website,not_captured
+www.co.fannin.tx.us,http://www.co.fannin.tx.us/default.aspx?Fannin_County/Elections,other,1,Fannin,$.coverage.counties[73].source_map.county_website,not_captured
+www.co.fayette.tx.us,http://www.co.fayette.tx.us/default.aspx?Fayette_County/Elections,other,1,Fayette,$.coverage.counties[74].source_map.county_website,not_captured
+www.co.fisher.tx.us,http://www.co.fisher.tx.us/,html,1,Fisher,$.coverage.counties[75].source_map.county_website,not_captured
+www.co.franklin.tx.us,https://www.co.franklin.tx.us/,html,1,Franklin,$.coverage.counties[79].source_map.county_website,not_captured
+www.co.freestone.tx.us,http://www.co.freestone.tx.us/default.aspx?Freestone_County/Elections,other,1,Freestone,$.coverage.counties[80].source_map.county_website,not_captured
+www.co.frio.tx.us,http://www.co.frio.tx.us/default.aspx?Frio_County/Elections,other,1,Frio,$.coverage.counties[81].source_map.county_website,not_captured
+www.co.gaines.tx.us,https://www.co.gaines.tx.us/,html,1,Gaines,$.coverage.counties[82].source_map.county_website,not_captured
+www.co.glasscock.tx.us,http://www.co.glasscock.tx.us/,html,1,Glasscock,$.coverage.counties[86].source_map.county_website,not_captured
+www.co.goliad.tx.us,http://www.co.goliad.tx.us/,html,1,Goliad,$.coverage.counties[87].source_map.county_website,not_captured
+www.co.gonzales.tx.us,http://www.co.gonzales.tx.us/,html,1,Gonzales,$.coverage.counties[88].source_map.county_website,not_captured
+www.co.gray.tx.us,http://www.co.gray.tx.us/,html,1,Gray,$.coverage.counties[89].source_map.county_website,not_captured
+www.co.grayson.tx.us,http://www.co.grayson.tx.us/default.aspx?name=elec.home,other,1,Grayson,$.coverage.counties[90].source_map.county_website,not_captured
+www.co.gregg.tx.us,http://www.co.gregg.tx.us,other,1,Gregg,$.coverage.counties[91].source_map.county_website,not_captured
+www.co.hall.tx.us,https://www.co.hall.tx.us/page/hall.County.Elections,other,1,Hall,$.coverage.counties[95].source_map.county_website,not_captured
+www.co.hansford.tx.us,http://www.co.hansford.tx.us/default.aspx?Hansford_County/Home,other,1,Hansford,$.coverage.counties[97].source_map.county_website,not_captured
+www.co.hardeman.tx.us,https://www.co.hardeman.tx.us/page/hardeman.Elections,other,1,Hardeman,$.coverage.counties[98].source_map.county_website,not_captured
+www.co.hardin.tx.us,https://www.co.hardin.tx.us/,html,1,Hardin,$.coverage.counties[99].source_map.county_website,not_captured
+www.co.hartley.tx.us,http://www.co.hartley.tx.us/default.aspx?Hartley_County/Voter.Information,other,1,Hartley,$.coverage.counties[102].source_map.county_website,not_captured
+www.co.haskell.tx.us,http://www.co.haskell.tx.us/default.aspx?Haskell_County/Home,other,1,Haskell,$.coverage.counties[103].source_map.county_website,not_captured
+www.co.hemphill.tx.us,http://www.co.hemphill.tx.us/,html,1,Hemphill,$.coverage.counties[105].source_map.county_website,not_captured
+www.co.hidalgo.tx.us,http://www.co.hidalgo.tx.us/elections/,html,1,Hidalgo,$.coverage.counties[107].source_map.county_website,not_captured
+www.co.hill.tx.us,http://www.co.hill.tx.us,other,1,Hill,$.coverage.counties[108].source_map.county_website,not_captured
+www.co.hockley.tx.us,http://www.co.hockley.tx.us/default.aspx?Hockley_County/Home,other,1,Hockley,$.coverage.counties[109].source_map.county_website,not_captured
+www.co.hockley.tx.us,https://www.co.hockley.tx.us/page/ElectionsHome,other,16,Hockley,$.coverage.counties[109].source_review_log[0].sources[0],not_captured
+www.co.hood.tx.us,http://www.co.hood.tx.us/index.aspx?nid=222,other,1,Hood,$.coverage.counties[110].source_map.county_website,not_captured
+www.co.houston.tx.us,http://www.co.houston.tx.us/default.aspx?Houston_County/Home,other,1,Houston,$.coverage.counties[112].source_map.county_website,not_captured
+www.co.howard.tx.us,http://www.co.howard.tx.us/default.aspx?Howard_County/Elections,other,1,Howard,$.coverage.counties[113].source_map.county_website,not_captured
+www.co.hutchinson.tx.us,http://www.co.hutchinson.tx.us/,html,1,Hutchinson,$.coverage.counties[116].source_map.county_website,not_captured
+www.co.irion.tx.us,http://www.co.irion.tx.us/,html,1,Irion,$.coverage.counties[117].source_map.county_website,not_captured
+www.co.jackson.tx.us,http://www.co.jackson.tx.us,other,1,Jackson,$.coverage.counties[119].source_map.county_website,not_captured
+www.co.jasper.tx.us,http://www.co.jasper.tx.us/,html,1,Jasper,$.coverage.counties[120].source_map.county_website,not_captured
+www.co.jim-hogg.tx.us,https://www.co.jim-hogg.tx.us/page/jim-hogg.Elections,other,1,Jim Hogg,$.coverage.counties[123].source_map.county_website,not_captured
+www.co.jim-wells.tx.us,http://www.co.jim-wells.tx.us/default.aspx?name=co.elections.administration,other,1,Jim Wells,$.coverage.counties[124].source_map.county_website,not_captured
+www.co.jones.tx.us,http://www.co.jones.tx.us/default.aspx?Jones_County/Home,other,1,Jones,$.coverage.counties[126].source_map.county_website,not_captured
+www.co.karnes.tx.us,http://www.co.karnes.tx.us/,html,1,Karnes,$.coverage.counties[127].source_map.county_website,not_captured
+www.co.kenedy.tx.us,http://www.co.kenedy.tx.us/,html,1,Kenedy,$.coverage.counties[130].source_map.county_website,not_captured
+www.co.kerr.tx.us,http://www.co.kerr.tx.us/elections/,html,1,Kerr,$.coverage.counties[132].source_map.county_website,not_captured
+www.co.kimble.tx.us,http://www.co.kimble.tx.us/,html,1,Kimble,$.coverage.counties[133].source_map.county_website,not_captured
+www.co.kinney.tx.us,http://www.co.kinney.tx.us/default.aspx?Kinney_County/Elections,other,1,Kinney,$.coverage.counties[135].source_map.county_website,not_captured
+www.co.kleberg.tx.us,http://www.co.kleberg.tx.us/default.aspx?Kleberg_County/Elections,other,1,Kleberg,$.coverage.counties[136].source_map.county_website,not_captured
+www.co.la-salle.tx.us,http://www.co.la-salle.tx.us/index.php?option=com_content&view=category&layout=blog&id=82&Itemid=435,other,1,La Salle,$.coverage.counties[141].source_map.county_website,not_captured
+www.co.lamar.tx.us,http://www.co.lamar.tx.us/default.aspx?Lamar_County/Elections,other,1,Lamar,$.coverage.counties[138].source_map.county_website,not_captured
+www.co.lamb.tx.us,https://www.co.lamb.tx.us/,html,1,Lamb,$.coverage.counties[139].source_map.county_website,not_captured
+www.co.lampasas.tx.us,https://www.co.lampasas.tx.us/,html,1,Lampasas,$.coverage.counties[140].source_map.county_website,not_captured
+www.co.lavaca.tx.us,http://www.co.lavaca.tx.us/default.aspx?Lavaca_County/Elections,other,1,Lavaca,$.coverage.counties[142].source_map.county_website,not_captured
+www.co.lee.tx.us,http://www.co.lee.tx.us/default.aspx?Lee_County/Elections,other,1,Lee,$.coverage.counties[143].source_map.county_website,not_captured
+www.co.leon.tx.us,https://www.co.leon.tx.us/page/leon.Elections,other,1,Leon,$.coverage.counties[144].source_map.county_website,not_captured
+www.co.liberty.tx.us,http://www.co.liberty.tx.us/default.aspx?Liberty_County/Elections,other,1,Liberty,$.coverage.counties[145].source_map.county_website,not_captured
+www.co.limestone.tx.us,https://www.co.limestone.tx.us/page/limestone.Elections,other,1,Limestone,$.coverage.counties[146].source_map.county_website,not_captured
+www.co.lipscomb.tx.us,http://www.co.lipscomb.tx.us/default.aspx?Lipscomb_County/Home,other,1,Lipscomb,$.coverage.counties[147].source_map.county_website,not_captured
+www.co.live-oak.tx.us,http://www.co.live-oak.tx.us/,html,1,Live Oak,$.coverage.counties[148].source_map.county_website,not_captured
+www.co.llano.tx.us,http://www.co.llano.tx.us/default.aspx?Llano_County/Elections,other,1,Llano,$.coverage.counties[149].source_map.county_website,not_captured
+www.co.loving.tx.us,https://www.co.loving.tx.us/,html,1,Loving,$.coverage.counties[150].source_map.county_website,not_captured
+www.co.lynn.tx.us,http://www.co.lynn.tx.us/,html,1,Lynn,$.coverage.counties[152].source_map.county_website,not_captured
+www.co.madison.tx.us,http://www.co.madison.tx.us,other,1,Madison,$.coverage.counties[156].source_map.county_website,not_captured
+www.co.madison.tx.us,https://www.co.madison.tx.us/page/madison.elections,other,15,Madison,$.coverage.counties[156].source_review_log[0].sources[0],not_captured
+www.co.marion.tx.us,http://www.co.marion.tx.us/default.aspx?Marion_County/Home,other,1,Marion,$.coverage.counties[157].source_map.county_website,not_captured
+www.co.martin.tx.us,http://www.co.martin.tx.us/158/Elections-Administration-Office/,html,1,Martin,$.coverage.counties[158].source_map.county_website,not_captured
+www.co.mason.tx.us,http://www.co.mason.tx.us/,html,1,Mason,$.coverage.counties[159].source_map.county_website,not_captured
+www.co.matagorda.tx.us,http://www.co.matagorda.tx.us/default.aspx?Matagorda_County/Elections,other,1,Matagorda,$.coverage.counties[160].source_map.county_website,not_captured
+www.co.mcculloch.tx.us,http://www.co.mcculloch.tx.us/,html,1,McCulloch,$.coverage.counties[153].source_map.county_website,not_captured
+www.co.mclennan.tx.us,http://www.co.mclennan.tx.us/337/Elections,other,1,McLennan,$.coverage.counties[154].source_map.county_website,not_captured
+www.co.midland.tx.us,https://www.co.midland.tx.us/328/Elections-Office,other,1,Midland,$.coverage.counties[164].source_map.county_website,not_captured
+www.co.mills.tx.us,http://www.co.mills.tx.us/,html,1,Mills,$.coverage.counties[166].source_map.county_website,not_captured
+www.co.mitchell.tx.us,https://www.co.mitchell.tx.us/page/mitchell.Elections,other,1,Mitchell,$.coverage.counties[167].source_map.county_website,not_captured
+www.co.montague.tx.us,http://www.co.montague.tx.us/default.aspx?Montague_County/Elections,other,1,Montague,$.coverage.counties[168].source_map.county_website,not_captured
+www.co.moore.tx.us,http://www.co.moore.tx.us/default.aspx?Moore_County/Elections,other,1,Moore,$.coverage.counties[170].source_map.county_website,not_captured
+www.co.morris.tx.us,http://www.co.morris.tx.us/,html,1,Morris,$.coverage.counties[171].source_map.county_website,not_captured
+www.co.nacogdoches.tx.us,http://www.co.nacogdoches.tx.us,other,1,Nacogdoches,$.coverage.counties[173].source_map.county_website,not_captured
+www.co.navarro.tx.us,http://www.co.navarro.tx.us/default.aspx?Navarro_County/Elections,other,1,Navarro,$.coverage.counties[174].source_map.county_website,not_captured
+www.co.newton.tx.us,http://www.co.newton.tx.us/default.aspx?Newton_County/Home,other,1,Newton,$.coverage.counties[175].source_map.county_website,not_captured
+www.co.nolan.tx.us,http://www.co.nolan.tx.us/,html,1,Nolan,$.coverage.counties[176].source_map.county_website,not_captured
+www.co.nueces.tx.us,http://www.co.nueces.tx.us/,html,1,Nueces,$.coverage.counties[177].source_map.county_website,not_captured
+www.co.ochiltree.tx.us,http://www.co.ochiltree.tx.us/,html,1,Ochiltree,$.coverage.counties[178].source_map.county_website,not_captured
+www.co.oldham.tx.us,http://www.co.oldham.tx.us/,html,1,Oldham,$.coverage.counties[179].source_map.county_website,not_captured
+www.co.orange.tx.us,https://www.co.orange.tx.us/departments/ElectionsAdministration,other,1,Orange,$.coverage.counties[180].source_map.county_website,not_captured
+www.co.palo-pinto.tx.us,https://www.co.palo-pinto.tx.us/,html,1,Palo Pinto,$.coverage.counties[181].source_map.county_website,not_captured
+www.co.panola.tx.us,http://www.co.panola.tx.us/,html,1,Panola,$.coverage.counties[182].source_map.county_website,not_captured
+www.co.pecos.tx.us,http://www.co.pecos.tx.us/,html,1,Pecos,$.coverage.counties[185].source_map.county_website,not_captured
+www.co.polk.tx.us,http://www.co.polk.tx.us/default.aspx?Polk_County/County.Clerk,other,1,Polk,$.coverage.counties[186].source_map.county_website,not_captured
+www.co.potter.tx.us,http://www.co.potter.tx.us/default.aspx?Potter_County/Elections,other,1,Potter,$.coverage.counties[187].source_map.county_website,not_captured
+www.co.presidio.tx.us,http://www.co.presidio.tx.us/,html,1,Presidio,$.coverage.counties[188].source_map.county_website,not_captured
+www.co.rains.tx.us,http://www.co.rains.tx.us/default.aspx?Rains_County/Elections,other,1,Rains,$.coverage.counties[189].source_map.county_website,not_captured
+www.co.real.tx.us,http://www.co.real.tx.us/,html,1,Real,$.coverage.counties[192].source_map.county_website,not_captured
+www.co.red-river.tx.us,http://www.co.red-river.tx.us/,html,1,Red River,$.coverage.counties[193].source_map.county_website,not_captured
+www.co.refugio.tx.us,http://www.co.refugio.tx.us/default.aspx?Refugio_County/Elections,other,1,Refugio,$.coverage.counties[195].source_map.county_website,not_captured
+www.co.robertson.tx.us,http://www.co.robertson.tx.us/default.aspx?Robertson_County/Elections,other,1,Robertson,$.coverage.counties[197].source_map.county_website,not_captured
+www.co.runnels.tx.us,http://www.co.runnels.tx.us/,html,1,Runnels,$.coverage.counties[199].source_map.county_website,not_captured
+www.co.sabine.tx.us,http://www.co.sabine.tx.us/default.aspx?Sabine_County/Elections,other,1,Sabine,$.coverage.counties[201].source_map.county_website,not_captured
+www.co.san-augustine.tx.us,https://www.co.san-augustine.tx.us/page/sanaugustine.Elections,other,1,San Augustine,$.coverage.counties[202].source_map.county_website,not_captured
+www.co.san-jacinto.tx.us,http://www.co.san-jacinto.tx.us/default.aspx?San-Jacinto_County/Elections,other,1,San Jacinto,$.coverage.counties[203].source_map.county_website,not_captured
+www.co.san-patricio.tx.us,http://www.co.san-patricio.tx.us/default.aspx?San-Patricio_County/Elections,other,1,San Patricio,$.coverage.counties[204].source_map.county_website,not_captured
+www.co.san-saba.tx.us,http://www.co.san-saba.tx.us/,html,1,San Saba,$.coverage.counties[205].source_map.county_website,not_captured
+www.co.scurry.tx.us,http://www.co.scurry.tx.us/default.aspx?Scurry_County/Elections,other,1,Scurry,$.coverage.counties[207].source_map.county_website,not_captured
+www.co.shelby.tx.us,http://www.co.shelby.tx.us/,html,1,Shelby,$.coverage.counties[209].source_map.county_website,not_captured
+www.co.sherman.tx.us,http://www.co.sherman.tx.us/,html,1,Sherman,$.coverage.counties[210].source_map.county_website,not_captured
+www.co.starr.tx.us,http://www.co.starr.tx.us/default.aspx?Starr_County/Elections,other,1,Starr,$.coverage.counties[213].source_map.county_website,not_captured
+www.co.stephens.tx.us,http://www.co.stephens.tx.us/,html,1,Stephens,$.coverage.counties[214].source_map.county_website,not_captured
+www.co.sterling.tx.us,http://www.co.sterling.tx.us/,html,1,Sterling,$.coverage.counties[215].source_map.county_website,not_captured
+www.co.sutton.tx.us,https://www.co.sutton.tx.us/,html,1,Sutton,$.coverage.counties[217].source_map.county_website,not_captured
+www.co.swisher.tx.us,http://www.co.swisher.tx.us/,html,1,Swisher,$.coverage.counties[218].source_map.county_website,not_captured
+www.co.terrell.tx.us,http://www.co.terrell.tx.us/,html,1,Terrell,$.coverage.counties[221].source_map.county_website,not_captured
+www.co.terry.tx.us,http://www.co.terry.tx.us/default.aspx?Terry_County/Elections,other,1,Terry,$.coverage.counties[222].source_map.county_website,not_captured
+www.co.titus.tx.us,https://www.co.titus.tx.us/,html,1,Titus,$.coverage.counties[224].source_map.county_website,not_captured
+www.co.tom-green.tx.us,http://www.co.tom-green.tx.us/default.aspx?name=ele.ElectionsHome,other,1,Tom Green,$.coverage.counties[225].source_map.county_website,not_captured
+www.co.trinity.tx.us,http://www.co.trinity.tx.us/,html,1,Trinity,$.coverage.counties[227].source_map.county_website,not_captured
+www.co.tyler.tx.us,https://www.co.tyler.tx.us/,html,1,Tyler,$.coverage.counties[228].source_map.county_website,not_captured
+www.co.upton.tx.us,http://www.co.upton.tx.us/,html,1,Upton,$.coverage.counties[230].source_map.county_website,not_captured
+www.co.walker.tx.us,https://www.co.walker.tx.us/elections,other,1,Walker,$.coverage.counties[235].source_map.county_website,not_captured
+www.co.waller.tx.us,https://www.co.waller.tx.us/page/Elections.current,other,1,Waller,$.coverage.counties[236].source_map.county_website,not_captured
+www.co.ward.tx.us,http://www.co.ward.tx.us,other,1,Ward,$.coverage.counties[237].source_map.county_website,not_captured
+www.co.washington.tx.us,http://www.co.washington.tx.us/default.aspx?Washington_County/Elections,other,1,Washington,$.coverage.counties[238].source_map.county_website,not_captured
+www.co.wharton.tx.us,http://www.co.wharton.tx.us/default.aspx?Wharton_County/Elections,other,1,Wharton,$.coverage.counties[240].source_map.county_website,not_captured
+www.co.wheeler.tx.us,http://www.co.wheeler.tx.us/,html,1,Wheeler,$.coverage.counties[241].source_map.county_website,not_captured
+www.co.wilbarger.tx.us,http://www.co.wilbarger.tx.us/default.aspx?Wilbarger_County/Elections,other,1,Wilbarger,$.coverage.counties[243].source_map.county_website,not_captured
+www.co.willacy.tx.us,http://www.co.willacy.tx.us/default.aspx?Willacy_County/Elections,other,1,Willacy,$.coverage.counties[244].source_map.county_website,not_captured
+www.co.wilson.tx.us,http://www.co.wilson.tx.us/default.aspx?Wilson_County/Elections,other,1,Wilson,$.coverage.counties[246].source_map.county_website,not_captured
+www.co.winkler.tx.us,http://www.co.winkler.tx.us/,html,1,Winkler,$.coverage.counties[247].source_map.county_website,not_captured
+www.co.yoakum.tx.us,http://www.co.yoakum.tx.us/,html,1,Yoakum,$.coverage.counties[250].source_map.county_website,not_captured
+www.co.young.tx.us,http://www.co.young.tx.us/default.aspx?Young_County/Elections,other,1,Young,$.coverage.counties[251].source_map.county_website,not_captured
+www.co.zapata.tx.us,http://www.co.zapata.tx.us/,html,1,Zapata,$.coverage.counties[252].source_map.county_website,not_captured
+www.co.zavala.tx.us,http://www.co.zavala.tx.us/,html,1,Zavala,$.coverage.counties[253].source_map.county_website,not_captured
+www.collincountytx.gov,https://www.collincountytx.gov/Elections/rosters,other,1,Collin,$.coverage.counties[42].source_map.rosters,not_captured
+www.collincountytx.gov,https://www.collincountytx.gov/docs/default-source/elections/election-rosters/totals-by-site-for-october-26-2026.pdf?sfvrsn=41d6591d_3,other,3,Collin,$.coverage.counties[42].official_observations[0].daily_source,not_captured
+www.collincountytx.gov,https://www.collincountytx.gov/docs/default-source/elections/election-rosters/totals-by-site-for-october-30-2026.pdf?sfvrsn=51289601_3,other,5,Collin,$.counties[7].latest.daily_source,not_captured
+www.collincountytx.gov,https://www.collincountytx.gov/docs/default-source/elections/election-rosters/totals-by-site-through-october-26-2026.pdf?sfvrsn=89a90e6c_3,other,5,Collin,$.counties[7].official_observation_history[0].source,not_captured
+www.collincountytx.gov,https://www.collincountytx.gov/docs/default-source/elections/election-rosters/totals-by-site-through-october-30-2026.pdf?sfvrsn=36628a0e_3,other,23,Collin,$.counties[7].latest.source,not_captured
+www.collincountytx.gov,https://www.collincountytx.gov/elections,other,1,Collin,$.coverage.counties[42].source_map.county_website,not_captured
+www.coryellcountytax.com,http://www.coryellcountytax.com/,html,1,Coryell,$.coverage.counties[49].source_map.county_website,not_captured
+www.countyofupshur.com,https://www.countyofupshur.com/,html,1,Upshur,$.coverage.counties[229].source_map.county_website,not_captured
+www.dallam.org,http://www.dallam.org/vote/,html,1,Dallam,$.coverage.counties[55].source_map.county_website,not_captured
+www.dallascountyvotes.org,http://www.dallascountyvotes.org/,html,1,Dallas,$.coverage.counties[56].source_map.county_website,not_captured
+www.deltacountytx.com,https://www.deltacountytx.com/,html,1,Delta,$.coverage.counties[59].source_map.county_website,not_captured
+www.dentoncounty.gov,https://www.dentoncounty.gov/,html,1,Denton,$.coverage.counties[60].source_map.county_website,not_captured
+www.dimmitcounty.org,http://www.dimmitcounty.org/,html,1,Dimmit,$.coverage.counties[63].source_map.county_website,not_captured
+www.dshs.texas.gov,https://www.dshs.texas.gov/center-health-statistics/texas-county-numbers-public-health-regions,other,1,Texas Department of State Health Services,$.coverage.roster_source.url,not_captured
+www.eastlandcountytexas.com,http://www.eastlandcountytexas.com/page/eastland.Joint.Elections.Administrator,other,1,Eastland,$.coverage.counties[66].source_map.county_website,not_captured
+www.elliscountytx.gov,https://www.elliscountytx.gov/312/Elections,other,6,Ellis,$.counties[12].latest.source_evidence.official_endorsement_chain[0].from_url,not_captured
+www.elliscountytx.gov,https://www.elliscountytx.gov/629/Upcoming-Elections,other,30,Ellis,$.counties[12].latest.sources[1].url,not_captured
+www.elliscountytx.gov,https://www.elliscountytx.gov/DocumentCenter/View/24310,other,48,Ellis,$.counties[12].latest.source,not_captured
+www.epcountyvotes.com,https://www.epcountyvotes.com/quick-links/early-voting-statistics,other,15,El Paso,$.coverage.counties[70].field_gap_ledger.fields.cumulative_in_person.attempts[1].url,not_captured
+www.filesforprogress.org,https://www.filesforprogress.org/datasets/2026/10/dfp_2026_tx_ge_tabs.pdf,pdf,1,Data for Progress,$.polls[11].source,not_captured
+www.fortbendcountytx.gov,https://www.fortbendcountytx.gov/government/departments/county-services/elections-voter-registration,other,1,Fort Bend,$.coverage.counties[78].source_map.county_website,not_captured
+www.fortbendcountytx.gov,https://www.fortbendcountytx.gov/sites/default/files/document-central/document-central/elections-documents/statistics/2026/Early-Voting-by-Personal-Appearance-Statistics-1_2.pdf,pdf,19,Fort Bend,$.counties[19].latest.source,not_captured
+www.fortbendcountytx.gov,https://www.fortbendcountytx.gov/sites/default/files/document-central/document-central/elections-documents/statistics/2026/Early-Voting-by-Personal-Appearance-Statistics-1_5.pdf,pdf,2,Fort Bend,$.coverage.recovery_log[0].reported_lead.source,not_captured
+www.galvestonvotes.org,http://www.galvestonvotes.org/,html,1,Galveston,$.coverage.counties[83].source_map.county_website,not_captured
+www.garzacounty.net,http://www.garzacounty.net/,html,1,Garza,$.coverage.counties[84].source_map.county_website,not_captured
+www.gillespiecounty.org,http://www.gillespiecounty.org/default.aspx?name=election_info,other,1,Gillespie,$.coverage.counties[85].source_map.county_website,not_captured
+www.guadalupetx.gov,https://www.guadalupetx.gov/,html,1,Guadalupe,$.coverage.counties[93].source_map.county_website,not_captured
+www.halecounty.org,http://www.halecounty.org/index.php,other,1,Hale,$.coverage.counties[94].source_map.county_website,not_captured
+www.hamiltoncountytx.gov,https://www.hamiltoncountytx.gov/,html,1,Hamilton,$.coverage.counties[96].source_map.county_website,not_captured
+www.harrisvotes.com,https://www.harrisvotes.com/,html,1,Harris,$.coverage.counties[100].source_map.county_website,not_captured
+www.hayscountytx.gov,https://www.hayscountytx.gov/elections,other,1,Hays,$.coverage.counties[104].source_map.county_website,not_captured
+www.henderson-county.com,https://www.henderson-county.com/departments/elections-voter-registration,other,1,Henderson,$.coverage.counties[106].source_map.county_website,not_captured
+www.hidalgocounty.us,https://www.hidalgocounty.us/105/Elections-Department,other,8,Hidalgo,$.counties[17].latest.county_registration.source,not_captured
+www.hidalgocounty.us,https://www.hidalgocounty.us/DocumentCenter/View/73361/EV-SUBS,other,44,Hidalgo,$.counties[17].latest.source,not_captured
+www.hopkinscountytx.org,http://www.hopkinscountytx.org/default.aspx?Hopkins_County/Elections,other,1,Hopkins,$.coverage.counties[111].source_map.county_website,not_captured
+www.huntcounty.net,http://www.huntcounty.net/,html,1,Hunt,$.coverage.counties[115].source_map.county_website,not_captured
+www.jackcounty.org,http://www.jackcounty.org/,html,1,Jack,$.coverage.counties[118].source_map.county_website,not_captured
+www.jeffdaviscounty.texas.gov,https://www.jeffdaviscounty.texas.gov/page/jeffdavis.Elections,other,1,Jeff Davis,$.coverage.counties[121].source_map.county_website,not_captured
+www.johnsoncountytx.org,https://www.johnsoncountytx.org/departments/elections-office,other,1,Johnson,$.coverage.counties[125].source_map.county_website,not_captured
+www.jordanresearchcenter.org,https://www.jordanresearchcenter.org/publications/tsuoct2026-txelections-statewide2026,other,1,TSU / Barbara Jordan Center,$.polls[7].source,not_captured
+www.kaufmancounty.net,https://www.kaufmancounty.net/,html,1,Kaufman,$.coverage.counties[128].source_map.county_website,not_captured
+www.kendallcountytx.gov,https://www.kendallcountytx.gov/,html,1,Kendall,$.coverage.counties[129].source_map.county_website,not_captured
+www.knoxcountytexas.org,http://www.knoxcountytexas.org/,html,1,Knox,$.coverage.counties[137].source_map.county_website,not_captured
+www.lubbockchronicle.com,https://www.lubbockchronicle.com/p/lubbock-county-early-voting-tops-52-000-as-final-week-begins,other,2,Lubbock,$.coverage.counties[151].source_review_log[0].reported_only_lead.source,not_captured
+www.lubbockcounty.gov,https://www.lubbockcounty.gov/department/division.php?structureid=155,other,9,Lubbock,$.coverage.counties[151].field_gap_ledger.fields.cumulative_in_person.attempts[4].url,not_captured
+www.lubbockcounty.gov,https://www.lubbockcounty.gov/egov/apps/document/center.egov?view=item&id=9593,other,3,Lubbock,$.coverage.counties[151].retrieval_attempts[0].url,not_captured
+www.mclennan.gov,https://www.mclennan.gov/337/Elections,other,24,McLennan,$.counties[14].latest.sources[1].url,not_captured
+www.mclennan.gov,https://www.mclennan.gov/546/Current-Election-Results,other,6,McLennan,$.counties[14].latest.source_evidence.official_endorsement_chain[0].from_url,not_captured
+www.medinacountytexas.org,http://www.medinacountytexas.org/default.aspx?Medina_County/Elections,other,1,Medina,$.coverage.counties[162].source_map.county_website,not_captured
+www.milamcounty.net,https://www.milamcounty.net/page/milam.elections,other,1,Milam,$.coverage.counties[165].source_map.county_website,not_captured
+www.parkercountytx.com,http://www.parkercountytx.com/index.aspx?NID=118,other,1,Parker,$.coverage.counties[183].source_map.county_website,not_captured
+www.randallcounty.com,https://www.randallcounty.com/QuickLinks.aspx?CID=19,other,1,Randall,$.coverage.counties[190].source_map.county_website,not_captured
+www.reevescounty.org,https://www.reevescounty.org/departments/elections,other,1,Reeves,$.coverage.counties[194].source_map.county_website,not_captured
+www.rockwallcountytexas.com,http://www.rockwallcountytexas.com/index.aspx?nid=232,other,1,Rockwall,$.coverage.counties[198].source_map.county_website,not_captured
+www.ruskcountytx.gov,https://www.ruskcountytx.gov/page/rusk.Elections,other,1,Rusk,$.coverage.counties[200].source_map.county_website,not_captured
+www.smith-county.com,https://www.smith-county.com/government/departments/elections,other,1,Smith,$.coverage.counties[211].source_map.county_website,not_captured
+www.somervell.co,http://www.somervell.co/additional-offices/elections/,html,1,Somervell,$.coverage.counties[212].source_map.county_website,not_captured
+www.sos.state.tx.us,https://www.sos.state.tx.us/about/newsreleases/2026/102626.shtml,html,256,Anderson,$.coverage.counties[0].source_map.current_portal_provenance,not_captured
+www.sos.state.tx.us,https://www.sos.state.tx.us/elections/historical/nov2026.shtml,html,1388,Dallas,$.counties[0].registered_source,not_captured
+www.sos.state.tx.us,https://www.sos.state.tx.us/elections/voter/county.shtml,html,254,Anderson,$.coverage.counties[0].source_map.county_directory,not_captured
+www.sos.state.tx.us,https://www.sos.state.tx.us/elections/voter/links.shtml,html,254,Anderson,$.coverage.counties[0].source_map.website_provenance,not_captured
+www.sos.texas.gov,https://www.sos.texas.gov/elections/earlyvoting/2016/oct31.shtml,html,15,,$.history.Travis[0].source,not_captured
+www.sos.texas.gov,https://www.sos.texas.gov/elections/earlyvoting/2018/oct29.shtml,html,30,,$.history.Travis[1].source,not_captured
+www.sos.texas.gov,https://www.sos.texas.gov/elections/earlyvoting/archive.shtml,html,1,,$.coverage.historic_sos_entry,not_captured
+www.sos.texas.gov,https://www.sos.texas.gov/elections/earlyvoting/index.shtml,html,3,,$.coverage.run_log[7].failures[0].url,not_captured
+www.sos.texas.gov,https://www.sos.texas.gov/elections/historical/index.shtml,html,1,,$.coverage.current_sos_entry,not_captured
+www.stonewallcounty.org,https://www.stonewallcounty.org/page/stonewall.Elections,other,1,Stonewall,$.coverage.counties[216].source_map.county_website,not_captured
+www.tarrantcounty.com,http://www.tarrantcounty.com/en/elections.html,html,1,Tarrant,$.coverage.counties[219].source_map.county_website,not_captured
+www.tarrantcountytx.gov,https://www.tarrantcountytx.gov/content/dam/main/elections/2026/1126/ev_reports/ABS_Daily_Totals.pdf,pdf,99,Tarrant,$.counties[1].latest.mail_source,not_captured
+www.tarrantcountytx.gov,https://www.tarrantcountytx.gov/content/dam/main/elections/2026/1126/ev_reports/Early_Voting_Daily_Totals.pdf,pdf,165,Tarrant,$.counties[1].latest.source,not_captured
+www.taylorcounty.texas.gov,https://www.taylorcounty.texas.gov/,html,1,Taylor,$.coverage.counties[220].source_map.county_website,not_captured
+www.uh.edu,https://www.uh.edu/hobby/texas2026/statewide26.pdf,pdf,1,UH Hobby,$.polls[1].source,not_captured
+www.uvaldecounty.com,http://www.uvaldecounty.com/,html,1,Uvalde,$.coverage.counties[231].source_map.county_website,not_captured
+www.valverdecounty.org,http://www.valverdecounty.org/,html,1,Val Verde,$.coverage.counties[232].source_map.county_website,not_captured
+www.vanzandtcounty.org,http://www.vanzandtcounty.org,other,1,Van Zandt,$.coverage.counties[233].source_map.county_website,not_captured
+www.vctxelections.org,https://www.vctxelections.org/,html,1,Victoria,$.coverage.counties[234].source_map.county_website,not_captured
+www.votedenton.gov,https://www.votedenton.gov/,html,1,Denton,$.coverage.counties[60].retrieval_issue.url,not_captured
+www.votelubbock.org,http://www.votelubbock.org/elections-office/,html,1,Lubbock,$.coverage.counties[151].source_map.county_website,not_captured
+www.votelubbock.org,https://www.votelubbock.org/,html,1,Lubbock,$.coverage.counties[151].retrieval_issue.url,not_captured
+www.votelubbock.org,https://www.votelubbock.org/election-information/,html,45,Lubbock,$.coverage.counties[151].source_review_log[0].sources[0],not_captured
+www.votelubbock.org,https://www.votelubbock.org/election-information/election-night-results/,html,8,Lubbock,$.coverage.counties[151].source_review_log[1].sources[0],not_captured
+www.votelubbock.org,https://www.votelubbock.org/elections-office/,html,9,Lubbock,$.coverage.counties[151].source_review_log[0].sources[1],not_captured
+www.webbcountytx.gov,http://www.webbcountytx.gov/ElectionsAdministration/,html,1,Webb,$.coverage.counties[239].source_map.county_website,not_captured
+www.wilcotx.gov,https://www.wilcotx.gov/185/Elections,other,5,Williamson,$.coverage.counties[245].source_map.county_website,not_captured
