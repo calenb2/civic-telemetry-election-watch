@@ -1,0 +1,24 @@
+/* National panel + layer-nav responsiveness */
+.ct-layer-nav button{transition:background-color .08s linear,color .08s linear,border-color .08s linear;border-radius:6px 6px 0 0;padding:9px 14px;font-weight:650}
+.ct-layer-nav button:hover{color:var(--text);background:#16263a}
+.ct-layer-nav button:active{transform:translateY(1px);background:#1d3049}
+.ct-layer-nav button[aria-pressed=true]{color:var(--text);background:#1a2c40;border-bottom:3px solid var(--brass,var(--amber));font-weight:750}
+.ct-layer-nav button[aria-pressed=true]::before{content:'▸ ';color:var(--amber)}
+.ct-congress.ct-live>.callout,.ct-congress.ct-live .ct-mode-switch,.ct-congress.ct-live .ct-scenario-notice,.ct-congress.ct-live .ct-controls,.ct-congress.ct-live .ct-chart-grid,.ct-congress.ct-live .ct-verification,.ct-congress.ct-live>section.panel:not(#ct-methodology):not(.nt-panel){display:none}
+.nt-panel{margin:0 0 22px}
+.nt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:10px 0 6px}
+.nt-balance{background:var(--panel2,#172535);border:1px solid var(--line,#2a3b4d);border-radius:6px;padding:12px 14px}
+.nt-balance h4{margin:0 0 6px}
+.nt-balance.nt-stale{border-color:var(--amber)}
+.nt-big{font-size:28px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.1}
+.nt-big small{font-size:12px;color:var(--muted);font-weight:400}
+.nt-parts{margin:8px 0 4px;font-size:13px}
+.nt-scroll{max-height:420px;overflow:auto;border:1px solid var(--line,#2a3b4d);border-radius:4px}
+.nt-scroll table thead th{position:sticky;top:0;background:var(--panel,#131f2e)}
+.nt-flag{display:inline-block;font-size:10px;border:1px solid var(--amber);color:var(--amber);border-radius:3px;padding:0 5px;margin-left:4px}
+.nt-notices{list-style:none;padding:0;margin:6px 0 0;font-size:12px;display:grid;gap:10px}
+.nt-notices li{border-left:2px solid var(--line,#2a3b4d);padding-left:10px;line-height:1.5}
+.nt-notices .badge{font-size:9px;padding:1px 6px;margin-left:6px}
+.nt-list{list-style:none;padding:0;margin:8px 0 0}
+.nt-details{border:0;padding:0;margin:0}
+.nt-details summary{font-size:12px}

@@ -21,3 +21,4 @@
 .rt-panel .rt-o{background:var(--neutral,#b5d0d9)}
 .rt-panel .rt-counties{font-size:12px}
 @media (max-width:720px){.rt-panel .rt-bar{grid-template-columns:120px 1fr 110px}.rt-panel{padding:10px 12px}}
+.rt-notices{border:0;padding:8px 0 0;margin:6px 0 0;font-size:12px}.rt-notices summary{font-size:11px;color:var(--quiet,#8291a3)}.rt-notices ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}.rt-notices li{border-left:2px solid var(--line,#2a3b4d);padding-left:10px;line-height:1.5}.rt-notices .badge{font-size:9px;padding:1px 6px;margin-left:6px}

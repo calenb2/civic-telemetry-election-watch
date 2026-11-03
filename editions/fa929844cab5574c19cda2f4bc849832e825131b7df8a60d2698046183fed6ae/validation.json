@@ -1,0 +1,85 @@
+{
+  "blocked": false,
+  "verdicts": [
+    {
+      "rule": "R00",
+      "level": "PASS",
+      "path": "$",
+      "message": "public contract applied: 281 internal paths excluded before validation"
+    },
+    {
+      "rule": "R01",
+      "level": "PASS",
+      "path": "$",
+      "message": "13 top-level keys, render set exact"
+    },
+    {
+      "rule": "R02",
+      "level": "PASS",
+      "path": "$.statewide",
+      "message": "7,463,553 + 280,996 = 7,744,549"
+    },
+    {
+      "rule": "R03",
+      "level": "PASS",
+      "path": "$.reviewed_at_iso",
+      "message": "2026-11-02T17:46:31-06:00"
+    },
+    {
+      "rule": "R03",
+      "level": "WARN",
+      "path": "$.reviewed_at",
+      "message": "reviewed_at equals the ISO string; the dashboard prints this field verbatim \u2014 supply a display string"
+    },
+    {
+      "rule": "R04",
+      "level": "PASS",
+      "path": "$.counties",
+      "message": "21 county records"
+    },
+    {
+      "rule": "R05",
+      "level": "PASS",
+      "path": "$.polls",
+      "message": "14 poll records"
+    },
+    {
+      "rule": "R06",
+      "level": "PASS",
+      "path": "$.coverage.counts",
+      "message": "{'not_yet_reviewed': 233, 'publisher_only': 9, 'official_observation': 12} sums to 254"
+    },
+    {
+      "rule": "R07",
+      "level": "PASS",
+      "path": "$",
+      "message": "no observation dates after 2026-11-02; 206 milestone dates allowed"
+    },
+    {
+      "rule": "R08",
+      "level": "PASS",
+      "path": "$",
+      "message": "no secret-shaped strings"
+    },
+    {
+      "rule": "R11",
+      "level": "PASS",
+      "path": "$",
+      "message": "no crawled-page text fields"
+    },
+    {
+      "rule": "R09",
+      "level": "PASS",
+      "path": "png",
+      "message": "2400x4960, 715,721 bytes, IEND present"
+    },
+    {
+      "rule": "R10",
+      "level": "PASS",
+      "path": "report",
+      "message": "report references the review date"
+    }
+  ],
+  "reviewed_at_iso": "2026-11-02T17:46:31-06:00",
+  "snapshot_bytes": 4261719
+}

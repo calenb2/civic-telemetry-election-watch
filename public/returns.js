@@ -58,11 +58,21 @@
       <p class="rt-foot">${d.rules.map(esc).join(' ')} Source: <a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.name)} ↗</a>. Every fetched payload is archived by hash; see <a href="/returns/${esc(d.version)}.json">this version</a>.</p>`;
   }
 
+  let noticesCache = null;
+  function noticesHTML(nt) {
+    const list = ((nt && nt.sources) || []).filter(s => (s.panels || []).includes('returns'));
+    if (!list.length) return '';
+    return `<details class="rt-notices"><summary>Sources and required notices (${list.length})</summary><ul>${list.map(s => `<li><b><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a></b> <span class="badge">${esc(s.review_status)}</span><br>${esc(s.notice)}<br><span class="muted">${esc(s.attribution)}</span></li>`).join('')}</ul></details>`;
+  }
   async function refresh() {
     let d = null, c = null;
     try { d = await getJSON('/api/returns'); } catch (e) { d = { status: 'unavailable' }; }
     try { c = await getJSON('/api/calls'); } catch (e) { c = null; }
+    if (!noticesCache) { try { noticesCache = await getJSON('/api/notices'); } catch (e) { noticesCache = null; } }
     render(d, c);
+    if (mount && noticesCache) mount.insertAdjacentHTML('beforeend', noticesHTML(noticesCache));
+    const congress = document.getElementById('ct-congress');
+    if (mount && congress && !congress.hidden) mount.hidden = true;
   }
 
   function mountPanel() {

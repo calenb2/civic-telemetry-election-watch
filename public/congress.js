@@ -46,6 +46,7 @@
    qs('.election-context').hidden=national;
    qs('.institutional-footer').hidden=national;
    const texasStatus=byId('snapshot-status');if(texasStatus)texasStatus.hidden=national;
+   const texasReturns=byId('returns-panel');if(texasReturns)texasReturns.hidden=national;
    if(national){document.querySelectorAll('.page').forEach(p=>p.hidden=true);byId('loading').hidden=true;}
    nav.querySelectorAll('[data-ct-layer]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ctLayer===layer)));
    if(national)us.setAttribute('aria-current','page');else us.removeAttribute('aria-current');
