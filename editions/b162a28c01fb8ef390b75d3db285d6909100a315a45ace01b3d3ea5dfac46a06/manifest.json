@@ -1,12 +1,27 @@
 {
-  "version": "818db1f6b7838c7496774f40b341b90e8ca2f926e8ccc25a6bd6d4fd73ffd803",
+  "supersedes": "818db1f6b7838c7496774f40b341b90e8ca2f926e8ccc25a6bd6d4fd73ffd803",
+  "withdrawn_from_public_archive": "818db1f6b7838c7496774f40b341b90e8ca2f926e8ccc25a6bd6d4fd73ffd803",
+  "report_scrub": [
+    "sentence matching /[^.]*Current PNG factual/visual QA is re/",
+    "paragraph: 'Website refresh did not complete. Failure recorded 2026-11-0'",
+    "paragraph: 'Built-in publisher requests to https://www.civictelemetry.or'",
+    "table: '|Timestamp America/Chicago|Method|Full path|User-Agent|HTTP|'",
+    "paragraph: 'Carried automatic-review rejections (no new rejection this r'",
+    "fenced block (752 chars)",
+    "fenced block (746 chars)",
+    "sentence matching /\\s*[^.]*publication is blocked[^.]*\\./",
+    "paragraph: 'Stage distinction: task enabled; this run recorded in progre'"
+  ],
+  "version": "b162a28c01fb8ef390b75d3db285d6909100a315a45ace01b3d3ea5dfac46a06",
   "reviewed_at_iso": "2026-11-02T17:46:31-06:00",
   "reviewed_at_display": "November 2, 2026 · 05:46 p.m. CST",
-  "published_at": "2026-11-03T01:48:19.310Z",
+  "published_at": "2026-11-03T02:59:47.270Z",
   "actor": "claude-fable-5.1 session_017qy5aB6VeBbTYSFtKZQC6J (owner-authorized, Calen Bedford)",
-  "note": "First OrbitWorks-published edition; package from ChatGPT task run reviewed 2026-11-02 17:46 CST; ChatGPT publication blocked by platform chunk review (attempt A chunk 35/55, attempt B chunk 15/17); public contract applied",
+  "note": "Owner-directed vendor/platform scrub of the report and reporting-transparency stream; adds /coverage.json and /reporting-transparency.json downloads; same research package (reviewed 2026-11-02 17:46 CST). 818db1f6 withdrawn from the public archive (vendor text) and retained privately.",
   "normalisations": [
-    "reviewed_at: ISO string replaced by display string derived from reviewed_at_iso"
+    "reviewed_at: ISO string replaced by display string derived from reviewed_at_iso",
+    "report: 9 platform/vendor operational passages removed by scrub.py (original sha256 in source_package)",
+    "reporting-transparency: 11 upstream origin URL(s) rewritten to the public origin"
   ],
   "contract_dropped_paths": {
     "count": 281,
@@ -328,12 +343,12 @@
     "snapshot.json": {
       "bytes": 1394667,
       "chunks": 6,
-      "sha256": "886cf161311ca5a98aac4dea8c51fd1b2ef396ead4e7445dd4b07e427c51b085"
+      "sha256": "7cd961d56e33e224d5ba77979ab3e8187d00e2b02c0976b1dfa0cb4dfe4cde22"
     },
     "notes.md": {
-      "bytes": 29061,
+      "bytes": 25777,
       "chunks": 1,
-      "sha256": "d91596705615d23c75213f846d71f8e63027a9949fcbb564effcc09d6f592b0a"
+      "sha256": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9"
     },
     "snapshot.png": {
       "bytes": 715721,
@@ -349,19 +364,19 @@
     "pass": 10
   },
   "public_files": {
-    "SOURCE-CAPTURE.md": "f2cfb93ef3f24c841062f2263e8134d84c2c8133e46450ee834330f4c9339e5a",
-    "api/delivery-status": "97c6d13773a7f909feb8722fab29a566272e09c1ae7df24d4dc282e9156e3b32",
-    "api/refresh-status": "221e4dbce966788348a51cadef39994a20c99dd116b704759ff212006d82d435",
-    "api/reporting-transparency": "2455f220d98425be561e49e30fe497ac52433d4586f2f0ae124f52154fd58899",
-    "api/snapshot": "886cf161311ca5a98aac4dea8c51fd1b2ef396ead4e7445dd4b07e427c51b085",
+    "api/delivery-status": "4eb492da00702aa6cd95dd3dc1535c701b7e294a0582d29b601c8885191e2b7d",
+    "api/refresh-status": "04bf09aeb497e99af2cdd57d0158636d34434295d5636382125510dd48e4fa79",
+    "api/reporting-transparency": "b71e912f2796af6f008ac8cd7840161b4d8e90dff0f2c48d9891a9676dd13019",
+    "api/snapshot": "7cd961d56e33e224d5ba77979ab3e8187d00e2b02c0976b1dfa0cb4dfe4cde22",
     "app.js": "8366613e2c2bf62bf7afcb8dbb005303c629af6ee1be05eb11e9a3b1f791b726",
     "civic-telemetry-mark.svg": "14ab1e3854377cad80ce960c1f250dd96e669f6874fa849ac7deb4edc9c3e3f8",
     "congress.css": "fda9d90007dac23c45ff1cfaddbc3a280f99f8d1ca04e934e03a5dfa88127a73",
     "congress.js": "104d8dd6b2117c772f7624e4302c0d2b9d057e78792ecced6965722a41bde8ad",
-    "data.json": "886cf161311ca5a98aac4dea8c51fd1b2ef396ead4e7445dd4b07e427c51b085",
+    "coverage.json": "88f75bcbea34120ff24de46f2a5b5f9e357aff5d0cf392fc722f4bd5c8282243",
+    "data.json": "7cd961d56e33e224d5ba77979ab3e8187d00e2b02c0976b1dfa0cb4dfe4cde22",
     "delivery-audit.css": "574b0f20a4df65a1302af979a2decf7ef0f82e7b221f51045c5af02e292cc47c",
     "delivery-audit.js": "ef91cd23910a884d5950f1c4506176f2e2658557d715ce2a47c6f58300c34059",
-    "edition.txt": "269f2a1e64797cefc6a88cc13c10dc36d25787a5b71c4b809155ef896cdf52dc",
+    "edition.txt": "8e4eb1067dab5c8604949c1d6a249248d696392e313c223e027940ea1bf171ec",
     "election-context.js": "7dac55e0caf9866146d7191169fa0d49c27e3fb900083f4fe0bef055d2957cd6",
     "icons/baseline.svg": "2d64079286273fd313ebf82c60b9f8fb1bbc968de305ba89441f8778b1738232",
     "icons/checkpoint.svg": "3aa6fd362480db2019b492d81ef84bc66b3daa494276384232ae8396d9d25156",
@@ -374,11 +389,11 @@
     "icons/overview.svg": "34411eb101bd8e441cb519357e22664ff4bb3c550b7ab7708a97af224e4669da",
     "icons/participation.svg": "34411eb101bd8e441cb519357e22664ff4bb3c550b7ab7708a97af224e4669da",
     "icons/polling.svg": "0304391a085e01cc9413fbaf28b0876e5e86d14fcc10db209ad6cca3bfa975e6",
-    "index.html": "6ffb522aee445c513d4b834f0ea7ddba9e267a2b348c307795f54a25ef527518",
-    "notes.md": "d91596705615d23c75213f846d71f8e63027a9949fcbb564effcc09d6f592b0a",
+    "index.html": "50b7c171dc4a0847dd621cc34f17b2e41c82d326554855ab19f30477daf441fa",
+    "notes.md": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9",
     "reporting-transparency.css": "2e359dcfc43025fc537c793596ed7f6d9490946e0162086164edaa14fd7bb316",
     "reporting-transparency.js": "ab5d4d89781a704a0e21f81c90b5b66212efe282e03e2674370b5385bfc66d57",
-    "robots.txt": "3073d1e371afb3271c7666148766fedc5145f7d8440f7114062db79b7bd58add",
+    "reporting-transparency.json": "b71e912f2796af6f008ac8cd7840161b4d8e90dff0f2c48d9891a9676dd13019",
     "snapshot.png": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8",
     "styles.css": "de4b44c46b4f76c857aca91d89554c568da58f62fcc9ec7d8abb8e7b16693c3e",
     "texas-heritage.svg": "5b6161063945d6a4ccd44c71f17447f0cbcdb4ed1ad273692bdbc68fce0d18b6",
