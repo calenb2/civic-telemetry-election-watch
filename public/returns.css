@@ -1,0 +1,23 @@
+/* Election-night returns panel */
+.rt-panel{max-width:1256px;margin:10px auto 0;background:var(--panel,#131f2e);border:1px solid var(--line,#2a3b4d);border-left:3px solid var(--amber,#e8bc69);border-radius:4px;padding:14px 18px;color:var(--text,#f3f0e8);font-size:13px}
+.rt-panel .rt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rt-panel h3{margin:0;font-size:16px}
+.rt-panel h4{margin:14px 0 6px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted,#b3bfcd)}
+.rt-panel .badge{font-size:11px;border:1px solid var(--line,#2a3b4d);border-radius:3px;padding:2px 8px;color:var(--muted,#b3bfcd)}
+.rt-panel .rt-foot{color:var(--quiet,#8291a3);font-size:12px;margin:6px 0 0}
+.rt-panel .rt-bar{display:grid;grid-template-columns:160px 1fr 140px;gap:10px;align-items:center;margin:6px 0}
+.rt-panel .rt-bar div{height:8px;background:var(--panel2,#172535);border:1px solid var(--line,#2a3b4d);border-radius:4px;overflow:hidden}
+.rt-panel .rt-bar i{display:block;height:100%;background:var(--neutral,#b5d0d9)}
+.rt-panel .rt-bar b{text-align:right;font-variant-numeric:tabular-nums}
+.rt-panel .rt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:8px}
+.rt-panel table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.rt-panel th,.rt-panel td{padding:5px 6px;border-bottom:1px solid var(--line,#2a3b4d);text-align:left;vertical-align:top}
+.rt-panel th{color:var(--quiet,#8291a3);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.rt-panel .num{text-align:right}
+.rt-panel .muted{color:var(--quiet,#8291a3)}
+.rt-panel .rt-chip{display:inline-block;min-width:16px;text-align:center;font-size:11px;font-weight:700;border-radius:3px;padding:0 4px;margin-right:4px;color:#0c1420}
+.rt-panel .rt-r{background:var(--red,#f28b7c)}
+.rt-panel .rt-d{background:var(--blue,#6bb9ff)}
+.rt-panel .rt-o{background:var(--neutral,#b5d0d9)}
+.rt-panel .rt-counties{font-size:12px}
+@media (max-width:720px){.rt-panel .rt-bar{grid-template-columns:120px 1fr 110px}.rt-panel{padding:10px 12px}}
