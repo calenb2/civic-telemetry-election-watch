@@ -23,3 +23,10 @@ corrections are new editions that cite the superseded version in their manifest.
 
 Licensing: editions and ledger CC BY 4.0; dashboard source © OrbitWorks Labs LLC — see LICENSE.
 Not official election results. See the disclaimer in LICENSE.
+
+## Branch protection and the release flow
+
+`main` is protected by the `protect-main` ruleset: deletions restricted, force-pushes blocked, and the
+`verify` status check (hash chain + append-only) must pass. New editions are pushed to a branch first;
+once `verify` passes on that commit, the same commit is fast-forwarded to `main`. The origin host releases
+only from `main`, after re-verifying the ledger and the edition manifest hashes.
