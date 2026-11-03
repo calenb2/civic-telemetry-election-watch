@@ -33,6 +33,18 @@
     return `<table class="rt-counties"><thead><tr><th>County</th><th class="num">Votes counted</th>${head}</tr></thead><tbody>${rows}</tbody></table>`;
   }
 
+  function compactRaces(d, pred, title, label) {
+    const rs = (d.races || []).filter(pred);
+    if (!rs.length) return '';
+    const rows = rs.map(r => {
+      const l = r.leader, cs = r.candidates || [];
+      const top = cs.slice(0, 2).map(c => `${esc(party(c.party))} ${esc(c.name)} ${n(c.votes)}`).join(' · ');
+      return `<tr><td>${esc(r.office.replace('U. S. REPRESENTATIVE DISTRICT', 'TX-').replace(/\s+/g, ' '))}</td><td>${l ? chip(l.party) + ' ' + esc(l.name) : '<span class="muted">—</span>'}</td><td class="num">${n(r.margin_votes)}</td><td class="num">${n(r.total_votes)}</td><td class="muted">${top}</td></tr>`;
+    }).join('');
+    return `<details class="rt-more"><summary>${esc(title)} (${rs.length})</summary><div class="nt-scroll"><table><thead><tr><th>${esc(label)}</th><th>Leader</th><th class="num">Margin</th><th class="num">Votes</th><th>Top two</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+  }
+  const chip = p => `<span class="rt-chip ${pclass(p)}">${esc(party(p))}</span>`;
+
   function callsTable(c) {
     if (!c || !Array.isArray(c.calls) || !c.calls.length) return '<p class="rt-foot">No race calls recorded. A call is an outlet\'s projection, never a count; this register lists outlet, time and link when one is recorded.</p>';
     const rows = c.calls.map(x => `<tr><td>${esc(x.race)}</td><td>${esc(x.called_for)}</td><td>${esc(x.outlet)}</td><td>${x.called_at ? central(x.called_at) : '—'}</td><td>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">source ↗</a>` : '—'}</td></tr>`).join('');
@@ -53,6 +65,8 @@
       <p class="rt-foot">${esc(d.election && d.election.name)} · SOS last updated ${esc(d.sos_last_updated)} · fetched ${central(d.fetched_at)}</p>
       ${bar(rep.counties, 'Counties reporting')}${bar(rep.precincts, 'Precincts reporting')}
       <div class="rt-grid">${d.key_races.map(raceTable).join('')}</div>
+      ${compactRaces(d, r => r.category === 'federal' && /^U\. S\. REPRESENTATIVE/.test(r.office), 'U.S. House — all Texas districts', 'District')}
+      ${compactRaces(d, r => r.category === 'statewide' && !d.key_races.some(k => k.race_id === r.race_id), 'Other statewide races', 'Office')}
       <h4>Monitored counties</h4>${countyTable(d)}
       <h4>Race calls (outlet projections)</h4>${callsTable(c)}
       <p class="rt-foot">${d.rules.map(esc).join(' ')} Source: <a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.name)} ↗</a>. Every fetched payload is archived by hash; see <a href="/returns/${esc(d.version)}.json">this version</a>.</p>`;
