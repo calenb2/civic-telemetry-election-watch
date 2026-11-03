@@ -21,5 +21,5 @@ is stamped), so the archive directory, the dashboard's `?version=` links and
 `/api/refresh-status` agree by construction. Editions are never modified after publication;
 corrections are new editions that cite the superseded version in their manifest.
 
-Licensing: editions and ledger CC BY 4.0; dashboard source © OrbitWorks LLC — see LICENSE.
+Licensing: editions and ledger CC BY 4.0; dashboard source © OrbitWorks Labs LLC — see LICENSE.
 Not official election results. See the disclaimer in LICENSE.

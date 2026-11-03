@@ -4,21 +4,21 @@ Civic Telemetry / Texas Election Watch — licensing
    public/data.json, public/notes.md, public/snapshot.png)
    Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
    https://creativecommons.org/licenses/by/4.0/
-   Attribution: "Civic Telemetry (OrbitWorks LLC), civictelemetry.org, edition <version>".
-   Per CC BY 4.0 §3(a)(1)(B) no reuse may imply endorsement by OrbitWorks LLC; per
-   §3(a)(3) OrbitWorks LLC may require removal of attribution from any adaptation.
+   Attribution: "Civic Telemetry (OrbitWorks Labs LLC (DBA OrbitWorks)), civictelemetry.org, edition <version>".
+   Per CC BY 4.0 §3(a)(1)(B) no reuse may imply endorsement by OrbitWorks Labs LLC (DBA OrbitWorks); per
+   §3(a)(3) OrbitWorks Labs LLC (DBA OrbitWorks) may require removal of attribution from any adaptation.
    Underlying facts (vote counts, registration figures, poll results) are not
    copyrightable; the license covers this compilation, arrangement and annotation.
 
 2. Dashboard source (site/, public/*.html, *.js, *.css, *.svg) and tools/
-   Copyright (c) 2026 OrbitWorks LLC. All rights reserved. Viewing, auditing and
+   Copyright (c) 2026 OrbitWorks Labs LLC (DBA OrbitWorks). All rights reserved. Viewing, auditing and
    reproducing the verification tool (tools/verify_ledger.py) for the purpose of
    checking this ledger is permitted; other reuse requires written permission.
 
 3. The publishing pipeline that produces these editions is maintained separately by
-   OrbitWorks LLC and is not part of this repository.
+   OrbitWorks Labs LLC (DBA OrbitWorks) and is not part of this repository.
 
-DISCLAIMER. This data and code are provided by OrbitWorks LLC for informational and
+DISCLAIMER. This data and code are provided by OrbitWorks Labs LLC (DBA OrbitWorks) for informational and
 research purposes only. Data is compiled from preliminary, unofficial public sources
 and may contain errors. It does not constitute official canvassed election results
 or legal advice. Users assume all risk for accuracy and fitness for any purpose.
