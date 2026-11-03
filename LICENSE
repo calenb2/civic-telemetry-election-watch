@@ -2,6 +2,7 @@ Civic Telemetry / Texas Election Watch — licensing
 
 1. Editions, ledger and source register (editions/, ledger/, sources/, public/api/*,
    public/data.json, public/notes.md, public/snapshot.png)
+   SPDX-License-Identifier: CC-BY-4.0
    Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
    https://creativecommons.org/licenses/by/4.0/
    Attribution: "Civic Telemetry (OrbitWorks Labs LLC (DBA OrbitWorks)), civictelemetry.org, edition <version>".
@@ -11,9 +12,17 @@ Civic Telemetry / Texas Election Watch — licensing
    copyrightable; the license covers this compilation, arrangement and annotation.
 
 2. Dashboard source (site/, public/*.html, *.js, *.css, *.svg) and tools/
+   SPDX-License-Identifier: LicenseRef-OrbitWorks-Proprietary
    Copyright (c) 2026 OrbitWorks Labs LLC (DBA OrbitWorks). All rights reserved. Viewing, auditing and
    reproducing the verification tool (tools/verify_ledger.py) for the purpose of
    checking this ledger is permitted; other reuse requires written permission.
+   Interface icons (served at /icons/ on civictelemetry.org) are third-party stock assets
+   licensed to OrbitWorks Labs LLC for display on the site. They are not distributed in this
+   repository and are not covered by either license above; their SHA-256 hashes are recorded
+   in site/SOURCE-CAPTURE.md so the served files remain auditable.
+
+   Trademarks. "Civic Telemetry", the Civic Telemetry mark, "OrbitWorks" and "OrbitWorks Labs"
+   are trademarks or trade names of OrbitWorks Labs LLC and are not licensed by this file.
 
 3. The publishing pipeline that produces these editions is maintained separately by
    OrbitWorks Labs LLC (DBA OrbitWorks) and is not part of this repository.

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0c1420"><meta name="description" content="About Civic Telemetry: who publishes it, how the record is kept, what you may reuse and how to attribute it, and the disclaimer that applies."><title>About &amp; licensing | Civic Telemetry</title><meta name="copyright" content="© 2026 OrbitWorks Labs LLC d/b/a OrbitWorks. Data CC BY 4.0; dashboard all rights reserved. Civic Telemetry is a trademark of OrbitWorks Labs LLC."><link rel="license" href="#license"><link rel="author" href="https://orbitworks.cloud/"><link rel="canonical" href="https://www.civictelemetry.org/about/"><link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/svg+xml" href="/civic-telemetry-mark.svg"><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+<header class="masthead"><a class="brand" href="/" aria-label="Civic Telemetry home"><img class="civic-mark" src="/civic-telemetry-mark.svg" alt=""><div><b>CIVIC<br>TELEMETRY<sup class="tm" aria-label="trademark">™</sup></b><span>PUBLIC SIGNAL. CLEAR PERSPECTIVE.</span></div></a></header>
+<main id="main" class="about-page">
+<h1>About Civic Telemetry<sup class="tm" aria-label="trademark">™</sup></h1>
+<p class="lede">An independent election-evidence project published by OrbitWorks Labs LLC (d/b/a OrbitWorks). It reports what official election sources published, and when. It never calls a race.</p>
+
+<h2 id="publisher">Who publishes this</h2>
+<p>Civic Telemetry is owned and operated by <a href="https://orbitworks.cloud/" rel="author">OrbitWorks Labs LLC</a>, a limited liability company doing business as OrbitWorks. It is not a government website and is not affiliated with any election authority, campaign, candidate, party or cause. OrbitWorks’ <a href="https://orbitworks.cloud/privacy">Privacy Policy</a>, <a href="https://orbitworks.cloud/terms">Terms of Use</a> and <a href="https://orbitworks.cloud/trust-center">Trust Center</a> apply to this site. To raise a security, privacy or accuracy concern, use the contact routes published in the Trust Center.</p>
+
+<h2 id="how">How the record is kept</h2>
+<p>Automated collectors pull machine-readable returns directly from state election offices (the Texas Secretary of State and the published feeds of other states listed in the <a href="/api/notices">source notices</a>) and from one independent aggregator. Every raw response is archived by content hash. Official counts are cross-checked against the aggregator, and any disagreement is flagged on the page rather than resolved silently. Each published edition is hash-chained into an append-only ledger whose integrity is verified automatically on every change; the full record, including the verification tool, is public at <a href="https://github.com/calenb2/civic-telemetry-election-watch">github.com/calenb2/civic-telemetry-election-watch</a>.</p>
+<dl>
+<dt>Verify an edition</dt><dd><code>python3 tools/verify_ledger.py</code> in the public record repository.</dd>
+<dt>Current edition</dt><dd><a href="/edition.txt">/edition.txt</a> — the SHA-256 of the edition’s canonical snapshot.</dd>
+<dt>Machine-readable streams</dt><dd><code>/api/returns</code>, <code>/api/national</code>, <code>/api/verification</code>, <code>/api/calls</code>, <code>/api/notices</code>, <code>/api/health</code>.</dd>
+</dl>
+
+<h2 id="license">Licensing and attribution</h2>
+<p><strong>Data, editions, ledger and source register</strong> (everything under <code>/api/</code>, <code>/data.json</code>, <code>/notes.md</code>, <code>/snapshot.png</code>, and the <code>editions/</code>, <code>ledger/</code> and <code>sources/</code> directories of the public record) are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>. You may copy, redistribute and adapt them, including commercially, provided you give attribution:</p>
+<p><code>Civic Telemetry (OrbitWorks Labs LLC), civictelemetry.org, edition &lt;version&gt;</code></p>
+<p>Use the edition version from <code>/edition.txt</code> or the <code>version</code> field of the stream you used, so readers can locate the exact record you relied on. Per CC BY 4.0 §3(a)(1)(B), no reuse may imply endorsement by OrbitWorks Labs LLC; per §3(a)(3), OrbitWorks Labs LLC may require removal of attribution from any adaptation. The underlying facts — vote counts, registration figures, poll results — are not copyrightable; the license covers this compilation, arrangement and annotation.</p>
+<p><strong>Dashboard source, design and tools</strong> (HTML, CSS, JavaScript, the Civic Telemetry mark, page artwork and the publishing tools) are © 2026 OrbitWorks Labs LLC, all rights reserved. Viewing, auditing and running the verification tool to check the ledger are permitted; any other reuse requires written permission from OrbitWorks Labs LLC.</p>
+<p><strong>Interface icons</strong> are licensed stock assets used under license by OrbitWorks Labs LLC. They are served from this site for display only and are not covered by either license above; they may not be extracted, copied or redistributed.</p>
+<p><strong>Trademarks.</strong> Civic Telemetry™, the Civic Telemetry mark, OrbitWorks™ and OrbitWorks Labs are trademarks or trade names of OrbitWorks Labs LLC. They may not be used to suggest endorsement, certification or affiliation with any campaign, candidate, party, cause or product. See §13 of the <a href="https://orbitworks.cloud/terms">OrbitWorks Terms of Use</a>.</p>
+
+<h2 id="disclaimer">Disclaimer</h2>
+<p>This data and code are provided by OrbitWorks Labs LLC for informational and research purposes only. Figures are compiled from preliminary, unofficial public sources and may contain errors; reported returns, outlet race calls and officially canvassed results are distinct, and counts may be revised as processing continues. Nothing on this site constitutes official election results, a race call, or legal advice. Users assume all risk for accuracy and fitness for any purpose. For voting instructions use <a href="https://www.votetexas.gov/">VoteTexas.gov</a> or your county election office.</p>
+
+<h2 id="contact">Contact and corrections</h2>
+<p>Corrections are published as new editions that cite the superseded version; editions are never edited in place. Report an error, a licensing question or a suspected misuse of this site’s name or data through the <a href="https://orbitworks.cloud/contact">OrbitWorks contact page</a>.</p>
+</main>
+<footer class="footer institutional-footer" aria-label="Civic Telemetry information"><div class="footer-legal"><p>© 2026 OrbitWorks Labs LLC d/b/a OrbitWorks. Civic Telemetry™. Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>; dashboard all rights reserved. <a href="/">Return to the dashboard</a>.</p></div></footer>
+</body></html>

@@ -16,6 +16,12 @@ Captured verbatim from the previously deployed www.civictelemetry.org front end 
 | styles.css | 61636 | de4b44c46b4f76c857aca91d89554c568da58f62fcc9ec7d8abb8e7b16693c3e |
 | texas-heritage.svg | 14864 | 5b6161063945d6a4ccd44c71f17447f0cbcdb4ed1ad273692bdbc68fce0d18b6 |
 | us-congress-emblem.svg | 67558 | 0c52bd196767815aaf04818601681c1b1601eb933848b736d1b18610f71bde56 |
+
+## Interface icons (served, not distributed)
+The `/icons/*.svg` files are Adobe Stock assets licensed to OrbitWorks Labs LLC for display on the site. From the 2026-11-03 notices release they are served from the origin host (`/srv/civic-telemetry/assets/icons/`, nginx `location /icons/`) and are no longer committed to this repository, because the stock license permits use in the site but not redistribution as standalone files. The served files are unchanged; their hashes, as captured 2026-11-03, are:
+
+| file | bytes | sha256 |
+|---|---:|---|
 | icons/baseline.svg | 2294 | 2d64079286273fd313ebf82c60b9f8fb1bbc968de305ba89441f8778b1738232 |
 | icons/checkpoint.svg | 2954 | 3aa6fd362480db2019b492d81ef84bc66b3daa494276384232ae8396d9d25156 |
 | icons/comparison.svg | 2993 | e20b8b267e1925ab8fe772dd28853788e83d1626bb0d8a77923fed3a74deee68 |

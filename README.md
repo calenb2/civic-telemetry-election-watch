@@ -21,8 +21,10 @@ is stamped), so the archive directory, the dashboard's `?version=` links and
 `/api/refresh-status` agree by construction. Editions are never modified after publication;
 corrections are new editions that cite the superseded version in their manifest.
 
-Licensing: editions and ledger CC BY 4.0; dashboard source © OrbitWorks Labs LLC — see LICENSE.
-Not official election results. See the disclaimer in LICENSE.
+Licensing: editions and ledger `CC-BY-4.0`; dashboard source `LicenseRef-OrbitWorks-Proprietary`
+(© OrbitWorks Labs LLC, all rights reserved); interface icons are licensed stock assets served from the
+origin and not distributed here — see [LICENSE](LICENSE) and [civictelemetry.org/about/](https://www.civictelemetry.org/about/).
+Civic Telemetry™ is a trademark of OrbitWorks Labs LLC. Not official election results. See the disclaimer in LICENSE.
 
 ## Branch protection and the release flow
 
