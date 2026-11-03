@@ -1,5 +1,5 @@
 # Front-end source capture
-Captured verbatim from https://www.civictelemetry.org/ through the owner's browser on 2026-11-03 ~01:22–01:25Z (the edge returns 403 to non-browser clients). The two Cloudflare bot-management `<script>` blocks that the edge injects into `index.html` were removed; nothing else was changed. `app.js` sha256 matches the hash the ChatGPT QC task recorded for `/app.js` on 2026-11-03T00:40:51Z (`8366613e…`).
+Captured verbatim from the previously deployed www.civictelemetry.org front end through the owner's browser on 2026-11-03 ~01:22–01:25Z. The two Cloudflare bot-management `<script>` blocks that the edge injects into `index.html` were removed; the edge-managed `robots.txt` is not part of the site source. Nothing else was changed. `app.js` sha256 `8366613e…` matches the independently recorded hash of the deployed file at 2026-11-03T00:40:51Z.
 
 | file | bytes | sha256 |
 |---|---:|---|
@@ -13,7 +13,6 @@ Captured verbatim from https://www.civictelemetry.org/ through the owner's brows
 | index.html | 7724 | 62d7f3cf966bb7c524a02412b0850002eb6a730941f2a994532f89cdcd31aa7b |
 | reporting-transparency.css | 6592 | 2e359dcfc43025fc537c793596ed7f6d9490946e0162086164edaa14fd7bb316 |
 | reporting-transparency.js | 16115 | ab5d4d89781a704a0e21f81c90b5b66212efe282e03e2674370b5385bfc66d57 |
-| robots.txt | 2676 | 3073d1e371afb3271c7666148766fedc5145f7d8440f7114062db79b7bd58add |
 | styles.css | 61636 | de4b44c46b4f76c857aca91d89554c568da58f62fcc9ec7d8abb8e7b16693c3e |
 | texas-heritage.svg | 14864 | 5b6161063945d6a4ccd44c71f17447f0cbcdb4ed1ad273692bdbc68fce0d18b6 |
 | us-congress-emblem.svg | 67558 | 0c52bd196767815aaf04818601681c1b1601eb933848b736d1b18610f71bde56 |
