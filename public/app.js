@@ -248,7 +248,7 @@ function refreshTimeLabels(){
  try{if(window.DeliveryAudit)window.DeliveryAudit.mount();}catch(error){console.error('Delivery audit mount failed',error);}
 
  const footer=document.getElementById('refresh-note');if(footer)footer.textContent=state+'. Each observation retains its own source and reporting cutoff.';
- const mastheadTime=document.getElementById('edition-date');if(mastheadTime){mastheadTime.textContent=snapshot;mastheadTime.removeAttribute('datetime');}
+ const mastheadTime=document.getElementById('edition-date');if(mastheadTime){mastheadTime.textContent=window.CT_RETURNS_FETCHED?('Returns fetched '+centralTime(window.CT_RETURNS_FETCHED)+' · analysis reviewed '+snapshot):snapshot;mastheadTime.removeAttribute('datetime');}
 
  document.querySelectorAll('.nav-tab').forEach(b=>{let stamp=b.querySelector('.tab-time');if(!stamp){stamp=document.createElement('small');stamp.className='tab-time';b.append(stamp);}stamp.textContent='Snapshot · '+snapshot;});
  document.querySelectorAll('[data-navigation-time]').forEach(stamp=>{stamp.textContent='Snapshot · '+snapshot;});

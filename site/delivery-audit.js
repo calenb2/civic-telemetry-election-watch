@@ -16,7 +16,7 @@
     const published=value?.status==='published';
     const snap=value?.ledger?.snapshot;
     const currentVersion=typeof DATA!=='undefined'?DATA.snapshot_version:null;
-    const verified=published&&!unavailable&&value.freshness!=='stale'&&value.assessment?.verdict==='healthy'&&snap?.version===currentVersion;
+    const verified=published&&!unavailable&&value.freshness!=='stale'&&['healthy','current'].includes(value.assessment?.verdict)&&snap?.version===currentVersion;
     const filesVerified=published&&!unavailable&&value.freshness!=='stale'&&value.assessment?.transport_integrity==='verified'&&snap?.version===currentVersion;
     const behind=published&&value.assessment?.upstream_freshness==='behind';
     const failed=published&&value.assessment?.verdict==='failed';

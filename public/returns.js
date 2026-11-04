@@ -9,6 +9,8 @@
   const party = p => ({ REP: 'R', DEM: 'D', LIB: 'L', GRE: 'G', IND: 'I', W: 'W' }[p] || p || '');
   const pclass = p => ({ REP: 'rt-r', DEM: 'rt-d' }[p] || 'rt-o');
   const central = iso => { const d = new Date(iso); return isNaN(d) ? esc(iso) : d.toLocaleString('en-US', { timeZone: 'America/Chicago', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' }); };
+  // SOS publishes 'Nov 04, 2026 01:28:46' in UTC with no zone marker; show it in Central, keep the raw string on hover.
+  const sosTime = s => { const m = /^([A-Za-z]{3}) (\d{1,2}), (\d{4}) (\d{1,2}):(\d{2}):(\d{2})$/.exec(String(s || '').trim()); if (!m) return esc(s); const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(m[1]); if (mo < 0) return esc(s); const d = new Date(Date.UTC(+m[3], mo, +m[2], +m[4], +m[5], +m[6])); return `<span title="SOS clock: ${esc(s)} UTC">${central(d.toISOString())}</span>`; };
   let mount = null, timer = null;
 
   async function getJSON(url) {
@@ -62,7 +64,7 @@
     const rep = d.reporting || {};
     const bar = (x, label) => { const a = x && x.reported, b = x && x.total; const w = (a && b) ? Math.round(100 * a / b) : 0; return `<div class="rt-bar"><span>${label}</span><div><i style="width:${w}%"></i></div><b>${n(a)} / ${n(b)}</b></div>`; };
     mount.innerHTML = `<div class="rt-head"><h3>Election night returns</h3><span class="badge">unofficial · SOS data v${esc(d.source.data_version)}</span></div>
-      <p class="rt-foot">${esc(d.election && d.election.name)} · SOS last updated ${esc(d.sos_last_updated)} · fetched ${central(d.fetched_at)}</p>
+      <p class="rt-foot">${esc(d.election && d.election.name)} · SOS last updated ${sosTime(d.sos_last_updated)} · fetched ${central(d.fetched_at)}</p>
       ${bar(rep.counties, 'Counties reporting')}${bar(rep.precincts, 'Precincts reporting')}
       <div class="rt-grid">${d.key_races.map(raceTable).join('')}</div>
       ${compactRaces(d, r => r.category === 'federal' && /^U\. S\. REPRESENTATIVE/.test(r.office), 'U.S. House — all Texas districts', 'District')}
@@ -84,6 +86,8 @@
     try { c = await getJSON('/api/calls'); } catch (e) { c = null; }
     if (!noticesCache) { try { noticesCache = await getJSON('/api/notices'); } catch (e) { noticesCache = null; } }
     render(d, c);
+    window.CT_RETURNS_FETCHED = (d && d.status === 'active') ? d.fetched_at : null;
+    const mt = document.getElementById('edition-date'); if (mt && window.CT_RETURNS_FETCHED) mt.textContent = 'Returns fetched ' + central(window.CT_RETURNS_FETCHED) + ' · analysis reviewed ' + (typeof DATA !== 'undefined' && DATA ? DATA.reviewed_at : '');
     if (mount && noticesCache) mount.insertAdjacentHTML('beforeend', noticesHTML(noticesCache));
     const congress = document.getElementById('ct-congress');
     if (mount && congress && !congress.hidden) mount.hidden = true;
