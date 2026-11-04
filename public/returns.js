@@ -59,17 +59,42 @@
     return `<table class="rt-counties"><thead><tr><th>County</th><th class="num">Votes in U.S. Senate race</th>${head}</tr></thead><tbody>${rows}</tbody></table><p class="rt-foot">A county shows "not in SOS feed yet" until its results reach the Secretary of State's platform; counties publish to their own sites first.</p>`;
   }
 
-  function compactRaces(d, pred, title, label) {
+  function compactRaces(d, pred, title, label, ac) {
     const rs = (d.races || []).filter(pred);
     if (!rs.length) return '';
     const rows = rs.map(r => {
       const l = r.leader, cs = r.candidates || [];
       const top = cs.slice(0, 2).map(c => `${esc(party(c.party))} ${esc(c.name)} ${n(c.votes)}`).join(' · ');
-      return `<tr><td>${esc(r.office.replace('U. S. REPRESENTATIVE DISTRICT', 'TX-').replace(/\s+/g, ' '))}</td><td>${l ? chip(l.party) + ' ' + esc(l.name) : '<span class="muted">—</span>'}</td><td class="num">${n(r.margin_votes)}</td><td class="num">${n(r.total_votes)}</td><td class="muted">${top}</td></tr>`;
+      const code = r.office.replace('U. S. REPRESENTATIVE DISTRICT', 'TX-').replace(/\s+/g, '').replace(/^TX-0?/, 'TX-');
+      const call = ac && ac.house && ac.house[code];
+      const callCell = ac ? `<td>${call ? chip(call.party) + ' ' + esc(call.name) + ' <span class="muted">civicAPI</span>' : '<span class="muted">not called</span>'}</td>` : '';
+      return `<tr><td>${esc(r.office.replace('U. S. REPRESENTATIVE DISTRICT', 'TX-').replace(/\s+/g, ' '))}</td><td>${l ? chip(l.party) + ' ' + esc(l.name) : '<span class="muted">—</span>'}</td><td class="num">${n(r.margin_votes)}</td><td class="num">${n(r.total_votes)}</td>${callCell}<td class="muted">${top}</td></tr>`;
     }).join('');
-    return `<details class="rt-more"><summary>${esc(title)} (${rs.length})</summary><div class="nt-scroll"><table><thead><tr><th>${esc(label)}</th><th>Leader</th><th class="num">Margin</th><th class="num">Votes</th><th>Top two</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+    return `<details class="rt-more"><summary>${esc(title)} (${rs.length})</summary><div class="nt-scroll"><table><thead><tr><th>${esc(label)}</th><th>Leader</th><th class="num">Margin</th><th class="num">Votes</th>${ac ? '<th>Called (civicAPI)</th>' : ''}<th>Top two</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
   }
   const chip = p => `<span class="rt-chip ${pclass(p)}">${esc(party(p))}</span>`;
+
+  // civicAPI decision-desk calls for Texas races (from /api/national). Labelled as civicAPI's calls; they are not
+  // outlet projections (the register below) and not counts.
+  function aggregatorCalls(nat) {
+    const out = { senate: null, governor: null, house: {}, asOf: {} };
+    if (!nat || !nat.chambers) return out;
+    const sen = nat.chambers.senate, gov = nat.chambers.governors, house = nat.chambers.house;
+    const tx = ch => ((ch && ch.regions) || []).find(r => r.code === 'TX');
+    out.senate = tx(sen) && tx(sen).called; out.asOf.senate = sen && sen.last_updated;
+    out.governor = tx(gov) && tx(gov).called; out.asOf.governor = gov && gov.last_updated;
+    ((house && house.regions) || []).filter(r => /^TX-/.test(r.code)).forEach(r => { if (r.called) out.house[r.code.replace(/^TX-0?/, 'TX-')] = r.called; });
+    out.asOf.house = house && house.last_updated; out.carried = { senate: !!(sen && sen.carried), governor: !!(gov && gov.carried), house: !!(house && house.carried) };
+    return out;
+  }
+  function aggregatorCallsHTML(ac) {
+    if (!ac || !ac.asOf) return '';
+    const houseList = Object.entries(ac.house).sort((a, b) => Number(a[0].slice(3)) - Number(b[0].slice(3)));
+    const row = (race, call, asOf, carried) => `<tr><td>${esc(race)}</td><td>${call ? chip(call.party) + ' ' + esc(call.name) : '<span class="muted">not called</span>'}</td><td class="muted">${asOf ? central(asOf) : '—'}${carried ? ' · last-known' : ''}</td></tr>`;
+    return `<h4>civicAPI decision-desk calls — Texas</h4><p class="rt-foot">Calls made by the aggregator's own desk, shown with the aggregator's source clock. Not an outlet projection, not an official result, not a Civic Telemetry call.</p>
+      <table><thead><tr><th>Race</th><th>civicAPI call</th><th>Source updated</th></tr></thead><tbody>${row('U.S. Senate', ac.senate, ac.asOf.senate, ac.carried.senate)}${row('Governor', ac.governor, ac.asOf.governor, ac.carried.governor)}${houseList.map(([k, v]) => row('U.S. House ' + k, v, ac.asOf.house, ac.carried.house)).join('')}</tbody></table>
+      <p class="rt-foot">${houseList.length} of 38 Texas U.S. House districts called by civicAPI${houseList.length ? '' : ' so far'}.</p>`;
+  }
 
   function callsTable(c) {
     if (!c || !Array.isArray(c.calls) || !c.calls.length) return '<p class="rt-foot">No race calls recorded. A call is an outlet\'s projection, never a count; this register lists outlet, time and link when one is recorded.</p>';
@@ -77,7 +102,7 @@
     return `<table><thead><tr><th>Race</th><th>Called for</th><th>Outlet</th><th>Time</th><th>Link</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
 
-  function render(d, c, v) {
+  function render(d, c, v, nat) {
     if (!mount) return;
     if (!d || d.status !== 'active') {
       const why = d && d.status === 'awaiting_activation' ? 'The Secretary of State activates election-night returns after polls close (7 p.m. Central). This panel switches on automatically; counts will appear here with the SOS data version and reporting progress.'
@@ -92,9 +117,10 @@
       ${bar(rep.counties, 'Counties uploaded to SOS')}${(rep.precincts && rep.precincts.total >= 1000) ? bar(rep.precincts, 'Precincts reporting') : ''}${(rep.polling_locations && rep.polling_locations.total) ? bar(rep.polling_locations, 'Polling locations reporting') : ''}
       ${crossCheck(d, v)}
       <div class="rt-grid">${d.key_races.map(raceTable).join('')}</div>
-      ${compactRaces(d, r => r.category === 'federal' && /^U\. S\. REPRESENTATIVE/.test(r.office), 'U.S. House — all Texas districts', 'District')}
+      ${compactRaces(d, r => r.category === 'federal' && /^U\. S\. REPRESENTATIVE/.test(r.office), 'U.S. House — all Texas districts (SOS partial; civicAPI call column)', 'District', aggregatorCalls(nat))}
       ${compactRaces(d, r => r.category === 'statewide' && !d.key_races.some(k => k.race_id === r.race_id), 'Other statewide races', 'Office')}
       <h4>Monitored counties</h4>${countyTable(d)}
+      ${aggregatorCallsHTML(aggregatorCalls(nat))}
       <h4>Race calls (outlet projections)</h4>${callsTable(c)}
       <p class="rt-foot">${d.rules.map(esc).join(' ')} Source: <a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.name)} ↗</a>. Every fetched payload is archived by hash; see <a href="/returns/${esc(d.version)}.json">this version</a>.</p>`;
   }
@@ -110,8 +136,9 @@
     try { d = await getJSON('/api/returns'); } catch (e) { d = { status: 'unavailable' }; }
     try { c = await getJSON('/api/calls'); } catch (e) { c = null; }
     let v = null; try { v = await getJSON('/api/verification'); } catch (e) { v = null; }
+    let nat = null; try { nat = await getJSON('/api/national'); } catch (e) { nat = null; }
     if (!noticesCache) { try { noticesCache = await getJSON('/api/notices'); } catch (e) { noticesCache = null; } }
-    render(d, c, v);
+    render(d, c, v, nat);
     window.CT_RETURNS_FETCHED = (d && d.status === 'active') ? d.fetched_at : null;
     const mt = document.getElementById('edition-date'); if (mt && window.CT_RETURNS_FETCHED) mt.textContent = 'Returns fetched ' + central(window.CT_RETURNS_FETCHED) + ' · analysis reviewed ' + (typeof DATA !== 'undefined' && DATA ? DATA.reviewed_at : '');
     if (mount && noticesCache) mount.insertAdjacentHTML('beforeend', noticesHTML(noticesCache));

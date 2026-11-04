@@ -11,7 +11,7 @@
   const status=value=>unavailable?'Delivery status unavailable':!value||value.status!=='published'?'Verification pending':value.last_attempt?.status==='failed'?'Latest audit did not publish':value.freshness==='stale'?'Audit overdue':label(value.assessment?.verdict);
   const warning=value=>unavailable||value?.freshness==='stale'||value?.last_attempt?.status==='failed'||['attention','stale','failed'].includes(value?.assessment?.verdict);
   const icon=()=>'<img src="'+esc(typeof licensedIconSources!=='undefined'?licensedIconSources.evidence:'/icons/evidence.svg')+'" alt="" aria-hidden="true" class="da-icon">';
-  const clocks=value=>'<div class="da-times"><span><b>Audit checked</b> '+esc(time(value?.reviewed_at))+'</span><span><b>Audit published</b> '+esc(time(value?.published_at))+'</span></div>';
+  const clocks=value=>'<div class="da-times"><span><b>Audit checked</b> '+esc(time(value?.reviewed_at))+'</span><span><b>Edition published (per manifest)</b> '+esc(time(value?.published_at))+'</span></div>';
   function compact(value){
     const published=value?.status==='published';
     const snap=value?.ledger?.snapshot;
