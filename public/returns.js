@@ -22,13 +22,27 @@
 
   function raceTable(r) {
     const rows = r.candidates.slice(0, 4).map(c => `<tr><td><span class="rt-chip ${pclass(c.party)}">${esc(party(c.party))}</span> ${esc(c.name)}</td><td class="num">${n(c.votes)}</td><td class="num">${pct(c.pct)}</td><td class="num muted">${n(c.early_votes)}</td></tr>`).join('');
-    return `<div class="rt-race"><h4>${esc(r.office)}</h4><table><thead><tr><th>Candidate</th><th class="num">Votes</th><th class="num">Share</th><th class="num">Early</th></tr></thead><tbody>${rows}</tbody></table>
+    return `<div class="rt-race"><h4>${esc(r.office)} <span class="muted">(SOS partial)</span></h4><table><thead><tr><th>Candidate</th><th class="num">Votes</th><th class="num">Share</th><th class="num">Early</th></tr></thead><tbody>${rows}</tbody></table>
       <p class="rt-foot">SOS partial: ${n(r.total_votes)} votes counted · current margin ${n(r.margin_votes)} votes</p></div>`;
   }
 
   // SOS statewide figures are a partial sum of the counties that have uploaded to the SOS platform. Large
   // counties post to their own sites (and to the AP) before they appear here, so the SOS partial can lean the
   // opposite way from every outlet. Say so, and put the aggregator's statewide figures beside the SOS ones.
+  function aggregatorTables(v) {
+    const comps = ((v && v.comparisons) || []).filter(c => c.state === 'TX' && c.aggregator && (c.rows || []).length);
+    if (!comps.length) return '';
+    const at = v.aggregator && v.aggregator.fetched_at;
+    const tables = comps.map(c => {
+      const rows = (c.rows || []).filter(r => r.in_aggregator && r.aggregator_votes > 0).sort((a, b) => b.aggregator_votes - a.aggregator_votes).slice(0, 4);
+      const tr = rows.map(r => `<tr><td>${chip(r.party)} ${esc(r.candidate)}</td><td class="num">${n(r.aggregator_votes)}</td><td class="num">${pct(r.aggregator_pct)}</td></tr>`).join('');
+      const lead = rows[0], second = rows[1];
+      return `<div class="rt-race"><h4>${esc(c.contest)} — statewide</h4><table><thead><tr><th>Candidate</th><th class="num">Votes</th><th class="num">Share</th></tr></thead><tbody>${tr}</tbody></table>
+        <p class="rt-foot">${pct(c.aggregator.percent_reporting)} reporting · ${n(c.aggregator.total_votes)} votes · margin ${lead && second ? n(lead.aggregator_votes - second.aggregator_votes) : '—'} · ${c.aggregator.called ? 'called by civicAPI' : 'not called'}</p></div>`;
+    }).join('');
+    return `<h4>Statewide count — county-direct aggregator (civicAPI)</h4><p class="rt-foot">Counts as reported by county election authorities and aggregated by civicAPI; this is the same county-direct basis wire services use, and it runs ahead of the Secretary of State's platform while large counties upload. Fetched ${at ? central(at) : '—'}. Unofficial; not a Civic Telemetry call.</p><div class="rt-grid">${tables}</div>`;
+  }
+
   function crossCheck(d, v) {
     const rep = d.reporting || {}, cr = rep.counties || {};
     const missing = (d.counties || []).filter(c => !(c.races || []).some(r => r.total_votes > 0)).map(c => countyName(c.county));
@@ -43,7 +57,7 @@
       return `<div class="rt-race"><h4>${esc(c.contest)}</h4><table><thead><tr><th>Candidate</th><th class="num">SOS partial</th><th class="num">Aggregator</th><th class="num">Gap (pts)</th></tr></thead><tbody>${cells}</tbody></table>
         <p class="rt-foot">SOS ${n(c.official.total_votes)} votes from ${n(cr.reported)} of ${n(cr.total)} counties · aggregator ${n(agg.total_votes)} votes, ${pct(agg.percent_reporting)} reporting${v && v.aggregator && v.aggregator.fetched_at ? ' (fetched ' + central(v.aggregator.fetched_at) + ')' : ''}${(c.flags || []).length ? ' · <b>flagged: ' + esc((c.flags || []).join(', ')) + '</b>' : ''}</p></div>`;
     }).join('');
-    return `<div class="callout rt-crosscheck"><strong>Read the SOS numbers as a partial.</strong> ${n(cr.reported)} of ${n(cr.total)} counties have uploaded results to the Secretary of State's platform.${missing.length ? ' Not yet in the SOS feed: <b>' + esc(missing.join(', ')) + '</b>.' : ''} Large counties publish to their own sites and to wire services before they reach SOS, so the SOS statewide share can differ sharply from what outlets show. The verification stream compares the SOS partial with the county-direct aggregator below; a gap over 0.5 points is flagged, not hidden.</div>
+    return `<h4>Official Secretary of State feed — partial</h4><div class="callout rt-crosscheck"><strong>Read the SOS numbers as a partial.</strong> ${n(cr.reported)} of ${n(cr.total)} counties have uploaded results to the Secretary of State's platform.${missing.length ? ' Not yet in the SOS feed: <b>' + esc(missing.join(', ')) + '</b>.' : ''} Large counties publish to their own sites and to wire services before they reach SOS, so the SOS statewide share can differ sharply from what outlets show. The verification stream compares the SOS partial with the county-direct aggregator below; a gap over 0.5 points is flagged, not hidden.</div>
       ${rows ? '<h4>SOS partial vs aggregator (statewide)</h4><div class="rt-grid">' + rows + '</div>' : ''}`;
   }
 
@@ -115,6 +129,7 @@
     mount.innerHTML = `<div class="rt-head"><h3>Election night returns</h3><span class="badge">unofficial · SOS data v${esc(d.source.data_version)}</span></div>
       <p class="rt-foot">${esc(d.election && d.election.name)} · SOS last updated ${sosTime(d.sos_last_updated)} · fetched ${central(d.fetched_at)}${d.carried ? ' · <b>last-known</b> — SOS platform did not answer at ' + central(d.last_checked_at) + (d.source_error && d.source_error.detail && d.source_error.detail.status ? ' (HTTP ' + esc(d.source_error.detail.status) + ')' : '') + '; figures are the last successful fetch' : ''}</p>
       ${bar(rep.counties, 'Counties uploaded to SOS')}${(rep.precincts && rep.precincts.total >= 1000) ? bar(rep.precincts, 'Precincts reporting') : ''}${(rep.polling_locations && rep.polling_locations.total) ? bar(rep.polling_locations, 'Polling locations reporting') : ''}
+      ${aggregatorTables(v)}
       ${crossCheck(d, v)}
       <div class="rt-grid">${d.key_races.map(raceTable).join('')}</div>
       ${compactRaces(d, r => r.category === 'federal' && /^U\. S\. REPRESENTATIVE/.test(r.office), 'U.S. House — all Texas districts (SOS partial; civicAPI call column)', 'District', aggregatorCalls(nat))}
