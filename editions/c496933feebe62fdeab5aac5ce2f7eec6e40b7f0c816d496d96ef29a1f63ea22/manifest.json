@@ -1,0 +1,89 @@
+{
+  "supersedes": "bd4724144b90b870a1752783e0e4c0b0ace00604f4bd9226d37320568f2e35ac",
+  "withdrawn_from_public_archive": null,
+  "report_scrub": [],
+  "version": "c496933feebe62fdeab5aac5ce2f7eec6e40b7f0c816d496d96ef29a1f63ea22",
+  "reviewed_at_iso": "2026-11-02T17:46:31-06:00",
+  "reviewed_at_display": "November 2, 2026 · 05:46 p.m. CST",
+  "published_at": "2026-11-04T01:58:49.103Z",
+  "actor": "Claude (OrbitWorks pipeline), interactive session 2026-11-04",
+  "note": "UI fix: Texas returns panel now states that SOS statewide figures are a partial of the counties that have uploaded to the SOS platform (63/254 at 01:48Z; Harris, Dallas, Tarrant, Bexar, Travis, Collin not yet in the feed), names the missing monitored counties, shows SOS-partial vs aggregator shares with the verification share_gap flags inline, replaces the county Votes counted column (feed TV sums every contest) with the U.S. Senate race total, hides the implausible precinct denominator, and labels carried documents. Same data as edition bd472414. --supersedes bd4724144b90b870a1752783e0e4c0b0ace00604f4bd9226d37320568f2e35ac",
+  "normalisations": [
+    "reporting-transparency: 11 upstream origin URL(s) rewritten to the public origin"
+  ],
+  "ui_release": "64ae64d820dfeb9a587bae20c3e3e15398b4afc7f41cbc145b21d7b777a75c59",
+  "contract_dropped_paths": {
+    "count": 0,
+    "distinct_keys": [],
+    "paths": []
+  },
+  "source_package": {
+    "Notices_20261103_from_82ca87d2.json": {
+      "bytes": 1394667,
+      "sha256": "09d15aec4f64f2d61411e8f5641c56aad24b26587cc2bf7fdef2d58cabccda83"
+    },
+    "Notices_20261103_from_82ca87d2.md": {
+      "bytes": 25777,
+      "sha256": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9"
+    },
+    "Notices_20261103_from_82ca87d2.png": {
+      "bytes": 715721,
+      "sha256": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8"
+    }
+  },
+  "published_assets": {
+    "snapshot.json": {
+      "bytes": 1394667,
+      "chunks": 6,
+      "sha256": "250aab7fb97f57e7ec5ea62eb2ed529af22bb36a87c01d11dd07cd11be04c3cf"
+    },
+    "notes.md": {
+      "bytes": 25777,
+      "chunks": 1,
+      "sha256": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9"
+    },
+    "snapshot.png": {
+      "bytes": 715721,
+      "chunks": 3,
+      "sha256": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8"
+    }
+  },
+  "reporting_transparency_passthrough": "rt-15b77d9f8bcb0758d20139d52cde93a865707f0ca76067dc48bd46a121b4d41d",
+  "validation": {
+    "blocked": false,
+    "fail": 0,
+    "warn": 0,
+    "pass": 11
+  },
+  "public_files": {
+    "about/index.html": "ebcf4be8b535c3127683ce35ebd04035945c82a8e782c1d428729975417200e5",
+    "api/delivery-status": "7e11673294c60cf09c612296ae5cc03df12a527f91af3538847976b35f60a847",
+    "api/refresh-status": "72eabfdd956bde9eac7568ab8b662140cf18bc39c8c6b7bca6bd484f860b5d37",
+    "api/reporting-transparency": "b71e912f2796af6f008ac8cd7840161b4d8e90dff0f2c48d9891a9676dd13019",
+    "api/snapshot": "250aab7fb97f57e7ec5ea62eb2ed529af22bb36a87c01d11dd07cd11be04c3cf",
+    "app.js": "23e8181e6e86e0c3fd7d9750fbfb79a1a2a26718159edc3eefb7350635d4ced8",
+    "civic-telemetry-mark.svg": "14ab1e3854377cad80ce960c1f250dd96e669f6874fa849ac7deb4edc9c3e3f8",
+    "congress.css": "fda9d90007dac23c45ff1cfaddbc3a280f99f8d1ca04e934e03a5dfa88127a73",
+    "congress.js": "91f531d546d0189f2b9c9630d88469f053b0de5400185a951bd4f6bfa62a09d0",
+    "coverage.json": "88f75bcbea34120ff24de46f2a5b5f9e357aff5d0cf392fc722f4bd5c8282243",
+    "data.json": "250aab7fb97f57e7ec5ea62eb2ed529af22bb36a87c01d11dd07cd11be04c3cf",
+    "delivery-audit.css": "574b0f20a4df65a1302af979a2decf7ef0f82e7b221f51045c5af02e292cc47c",
+    "delivery-audit.js": "86e12faffe31414411b66c18528cbde24dd1841c3a063e880aec22b3dfa9e59e",
+    "edition.txt": "3ca3b9e650cc33fe9cc0d69558f8f4cc29fd800ba310c420e30d95ad74603bc3",
+    "election-context.js": "7dac55e0caf9866146d7191169fa0d49c27e3fb900083f4fe0bef055d2957cd6",
+    "favicon.ico": "31c65d550340dc809364721099a8dfbca58154be1a6ad0c39428671b11af679a",
+    "index.html": "9ac380314bc4ef46197520586b277c5178144f026f8f0aa0333f12db2a907fa9",
+    "national.css": "bbf5957df6ae125e2593d663d22afdec5fabf981fca1cfffa31567ae5f2fe9e9",
+    "national.js": "ed8187c23b10817eff950e4ac66ee8821f84963ce2518be01dd7023f4b1d2327",
+    "notes.md": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9",
+    "reporting-transparency.css": "2e359dcfc43025fc537c793596ed7f6d9490946e0162086164edaa14fd7bb316",
+    "reporting-transparency.js": "ab5d4d89781a704a0e21f81c90b5b66212efe282e03e2674370b5385bfc66d57",
+    "reporting-transparency.json": "b71e912f2796af6f008ac8cd7840161b4d8e90dff0f2c48d9891a9676dd13019",
+    "returns.css": "eddd0f628271fbd991a56d43f81ac0a264fc16274eb54dce51c52c35087e7392",
+    "returns.js": "3550fa55d75612fac9333c6f5e62e84915086fabdd4dda113f934263715ab96c",
+    "snapshot.png": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8",
+    "styles.css": "ba8456fecf421b016a9dec0df931096267916f6fe419ae1987cbc7238bdbd2b4",
+    "texas-heritage.svg": "5b6161063945d6a4ccd44c71f17447f0cbcdb4ed1ad273692bdbc68fce0d18b6",
+    "us-congress-emblem.svg": "0c52bd196767815aaf04818601681c1b1601eb933848b736d1b18610f71bde56"
+  }
+}

@@ -22,17 +22,40 @@
   function raceTable(r) {
     const rows = r.candidates.slice(0, 4).map(c => `<tr><td><span class="rt-chip ${pclass(c.party)}">${esc(party(c.party))}</span> ${esc(c.name)}</td><td class="num">${n(c.votes)}</td><td class="num">${pct(c.pct)}</td><td class="num muted">${n(c.early_votes)}</td></tr>`).join('');
     return `<div class="rt-race"><h4>${esc(r.office)}</h4><table><thead><tr><th>Candidate</th><th class="num">Votes</th><th class="num">Share</th><th class="num">Early</th></tr></thead><tbody>${rows}</tbody></table>
-      <p class="rt-foot">Total ${n(r.total_votes)} · leader margin ${n(r.margin_votes)} votes</p></div>`;
+      <p class="rt-foot">SOS partial: ${n(r.total_votes)} votes counted · current margin ${n(r.margin_votes)} votes</p></div>`;
+  }
+
+  // SOS statewide figures are a partial sum of the counties that have uploaded to the SOS platform. Large
+  // counties post to their own sites (and to the AP) before they appear here, so the SOS partial can lean the
+  // opposite way from every outlet. Say so, and put the aggregator's statewide figures beside the SOS ones.
+  function crossCheck(d, v) {
+    const rep = d.reporting || {}, cr = rep.counties || {};
+    const missing = (d.counties || []).filter(c => !(c.races || []).some(r => r.total_votes > 0)).map(c => c.county);
+    const comps = ((v && v.comparisons) || []).filter(c => c.state === 'TX' && c.official && c.aggregator);
+    const partial = cr.reported != null && cr.total && cr.reported < cr.total;
+    if (!partial && !comps.some(c => (c.flags || []).length)) return '';
+    const rows = comps.map(c => {
+      const off = (c.official.candidates || []).filter(x => !x.write_in).slice(0, 2);
+      const agg = c.aggregator || {};
+      const aggRows = (c.rows || []).filter(r => off.some(o => o.name === r.candidate));
+      const cells = off.map(o => { const a = aggRows.find(r => r.candidate === o.name) || {}; return `<tr><td><span class="rt-chip ${pclass(o.party)}">${esc(party(o.party))}</span> ${esc(o.name)}</td><td class="num">${pct(o.pct)}</td><td class="num">${pct(a.aggregator_pct)}</td><td class="num ${Math.abs(a.gap_points || 0) >= 0.5 ? 'rt-gap' : 'muted'}">${a.gap_points == null ? '—' : (a.gap_points > 0 ? '+' : '') + Number(a.gap_points).toFixed(1)}</td></tr>`; }).join('');
+      return `<div class="rt-race"><h4>${esc(c.contest)}</h4><table><thead><tr><th>Candidate</th><th class="num">SOS partial</th><th class="num">Aggregator</th><th class="num">Gap (pts)</th></tr></thead><tbody>${cells}</tbody></table>
+        <p class="rt-foot">SOS ${n(c.official.total_votes)} votes from ${n(cr.reported)} of ${n(cr.total)} counties · aggregator ${n(agg.total_votes)} votes, ${pct(agg.percent_reporting)} reporting${(c.flags || []).length ? ' · <b>flagged: ' + esc((c.flags || []).join(', ')) + '</b>' : ''}</p></div>`;
+    }).join('');
+    return `<div class="callout rt-crosscheck"><strong>Read the SOS numbers as a partial.</strong> ${n(cr.reported)} of ${n(cr.total)} counties have uploaded results to the Secretary of State's platform.${missing.length ? ' Not yet in the SOS feed: <b>' + esc(missing.join(', ')) + '</b>.' : ''} Large counties publish to their own sites and to wire services before they reach SOS, so the SOS statewide share can differ sharply from what outlets show. The verification stream compares the SOS partial with the county-direct aggregator below; a gap over 0.5 points is flagged, not hidden.</div>
+      ${rows ? '<h4>SOS partial vs aggregator (statewide)</h4><div class="rt-grid">' + rows + '</div>' : ''}`;
   }
 
   function countyTable(d) {
     const key = d.key_races.filter(r => /SENATOR|GOVERNOR/.test(r.office) && !/LIEUTENANT/.test(r.office)).map(r => r.race_id);
     const head = d.key_races.filter(r => key.includes(r.race_id)).map(r => `<th>${esc(r.office.replace('U. S. ', 'U.S. ').replace(/\s+$/, ''))}</th>`).join('');
-    const rows = d.counties.slice().sort((a, b) => (b.total_votes || 0) - (a.total_votes || 0)).map(c => {
+    const senateVotes = c => { const r = (c.races || []).find(x => x.race_id === key[0]); return r ? r.total_votes : null; };
+    const rows = d.counties.slice().sort((a, b) => (senateVotes(b) || 0) - (senateVotes(a) || 0)).map(c => {
+      const sv = senateVotes(c);
       const cells = key.map(id => { const r = c.races.find(x => x.race_id === id); if (!r || !r.leader) return '<td class="muted">—</td>'; return `<td><span class="rt-chip ${pclass(r.leader.party)}">${esc(party(r.leader.party))}</span> ${esc(r.leader.name.split('/')[0])} <span class="muted">+${n(r.margin_votes)}</span></td>`; }).join('');
-      return `<tr><td>${esc(c.county)}</td><td class="num">${n(c.total_votes)}</td>${cells}</tr>`;
+      return `<tr><td>${esc(c.county)}</td><td class="num">${sv ? n(sv) : '<span class="muted">not in SOS feed yet</span>'}</td>${cells}</tr>`;
     }).join('');
-    return `<table class="rt-counties"><thead><tr><th>County</th><th class="num">Votes counted</th>${head}</tr></thead><tbody>${rows}</tbody></table>`;
+    return `<table class="rt-counties"><thead><tr><th>County</th><th class="num">Votes in U.S. Senate race</th>${head}</tr></thead><tbody>${rows}</tbody></table><p class="rt-foot">A county shows "not in SOS feed yet" until its results reach the Secretary of State's platform; counties publish to their own sites first.</p>`;
   }
 
   function compactRaces(d, pred, title, label) {
@@ -53,7 +76,7 @@
     return `<table><thead><tr><th>Race</th><th>Called for</th><th>Outlet</th><th>Time</th><th>Link</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
 
-  function render(d, c) {
+  function render(d, c, v) {
     if (!mount) return;
     if (!d || d.status !== 'active') {
       const why = d && d.status === 'awaiting_activation' ? 'The Secretary of State activates election-night returns after polls close (7 p.m. Central). This panel switches on automatically; counts will appear here with the SOS data version and reporting progress.'
@@ -64,8 +87,9 @@
     const rep = d.reporting || {};
     const bar = (x, label) => { const a = x && x.reported, b = x && x.total; const w = (a && b) ? Math.round(100 * a / b) : 0; return `<div class="rt-bar"><span>${label}</span><div><i style="width:${w}%"></i></div><b>${n(a)} / ${n(b)}</b></div>`; };
     mount.innerHTML = `<div class="rt-head"><h3>Election night returns</h3><span class="badge">unofficial · SOS data v${esc(d.source.data_version)}</span></div>
-      <p class="rt-foot">${esc(d.election && d.election.name)} · SOS last updated ${sosTime(d.sos_last_updated)} · fetched ${central(d.fetched_at)}</p>
-      ${bar(rep.counties, 'Counties reporting')}${bar(rep.precincts, 'Precincts reporting')}
+      <p class="rt-foot">${esc(d.election && d.election.name)} · SOS last updated ${sosTime(d.sos_last_updated)} · fetched ${central(d.fetched_at)}${d.carried ? ' · <b>last-known</b> — SOS platform did not answer at ' + central(d.last_checked_at) + (d.source_error && d.source_error.detail && d.source_error.detail.status ? ' (HTTP ' + esc(d.source_error.detail.status) + ')' : '') + '; figures are the last successful fetch' : ''}</p>
+      ${bar(rep.counties, 'Counties uploaded to SOS')}${(rep.precincts && rep.precincts.total >= 1000) ? bar(rep.precincts, 'Precincts reporting') : ''}${(rep.polling_locations && rep.polling_locations.total) ? bar(rep.polling_locations, 'Polling locations reporting') : ''}
+      ${crossCheck(d, v)}
       <div class="rt-grid">${d.key_races.map(raceTable).join('')}</div>
       ${compactRaces(d, r => r.category === 'federal' && /^U\. S\. REPRESENTATIVE/.test(r.office), 'U.S. House — all Texas districts', 'District')}
       ${compactRaces(d, r => r.category === 'statewide' && !d.key_races.some(k => k.race_id === r.race_id), 'Other statewide races', 'Office')}
@@ -84,8 +108,9 @@
     let d = null, c = null;
     try { d = await getJSON('/api/returns'); } catch (e) { d = { status: 'unavailable' }; }
     try { c = await getJSON('/api/calls'); } catch (e) { c = null; }
+    let v = null; try { v = await getJSON('/api/verification'); } catch (e) { v = null; }
     if (!noticesCache) { try { noticesCache = await getJSON('/api/notices'); } catch (e) { noticesCache = null; } }
-    render(d, c);
+    render(d, c, v);
     window.CT_RETURNS_FETCHED = (d && d.status === 'active') ? d.fetched_at : null;
     const mt = document.getElementById('edition-date'); if (mt && window.CT_RETURNS_FETCHED) mt.textContent = 'Returns fetched ' + central(window.CT_RETURNS_FETCHED) + ' · analysis reviewed ' + (typeof DATA !== 'undefined' && DATA ? DATA.reviewed_at : '');
     if (mount && noticesCache) mount.insertAdjacentHTML('beforeend', noticesHTML(noticesCache));
