@@ -26,3 +26,10 @@
 
 .rt-crosscheck{margin:10px 0 14px}
 .rt-gap{color:var(--amber,#e8bc69);font-weight:700}
+
+/* Election-night lede: the panel is the page's first reading on election night */
+.rt-panel .rt-lede{border-bottom:1px solid var(--line,#2a3b4d);padding-bottom:10px;margin-bottom:10px}
+.rt-panel .rt-lede .eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber,#e8bc69);margin-bottom:6px}
+.rt-panel .rt-lede h2{margin:0;font-size:26px;line-height:1.18;font-variant-numeric:tabular-nums}
+.rt-panel .rt-lede p{margin:6px 0 0;color:var(--muted,#b3bfcd);font-size:12px;max-width:74ch}
+@media (max-width:720px){.rt-panel .rt-lede h2{font-size:20px}}
