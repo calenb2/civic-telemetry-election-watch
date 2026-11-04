@@ -24,7 +24,7 @@ corrections are new editions that cite the superseded version in their manifest.
 Licensing: editions and ledger `CC-BY-4.0`; dashboard source `LicenseRef-OrbitWorks-Proprietary`
 (© OrbitWorks Labs LLC, all rights reserved); interface icons are licensed stock assets served from the
 origin and not distributed here — see [LICENSE](LICENSE) and [civictelemetry.org/about/](https://www.civictelemetry.org/about/).
-Civic Telemetry™ is a trademark of OrbitWorks Labs LLC. Not official election results. See the disclaimer in LICENSE.
+Civic Telemetry™ is a trademark of OrbitWorks Labs LLC (U.S. service mark application Serial No. 50198250, filed 2026-11-03, pending). Not official election results. See the disclaimer in LICENSE.
 
 ## Branch protection and the release flow
 

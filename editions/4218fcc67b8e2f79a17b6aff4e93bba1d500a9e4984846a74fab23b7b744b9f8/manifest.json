@@ -1,0 +1,89 @@
+{
+  "supersedes": "96ee61e7bdd6c8b927df1d1b377acecf86239786d6df107cbb943fcfe01665c2",
+  "withdrawn_from_public_archive": null,
+  "report_scrub": [],
+  "version": "4218fcc67b8e2f79a17b6aff4e93bba1d500a9e4984846a74fab23b7b744b9f8",
+  "reviewed_at_iso": "2026-11-02T17:46:31-06:00",
+  "reviewed_at_display": "November 2, 2026 · 05:46 p.m. CST",
+  "published_at": "2026-11-04T00:51:23.423Z",
+  "actor": "Claude (OrbitWorks pipeline), interactive session 2026-11-03",
+  "note": "UI release: trademark statements updated with the U.S. service mark application for CIVIC TELEMETRY (Serial 50198250, filed 2026-11-03, Classes 035/042, pending) in /about/, LICENSE, README and footer; same data as edition 96ee61e7 --supersedes 96ee61e7bdd6c8b927df1d1b377acecf86239786d6df107cbb943fcfe01665c2",
+  "normalisations": [
+    "reporting-transparency: 11 upstream origin URL(s) rewritten to the public origin"
+  ],
+  "ui_release": "8a9f0f2cd4bd6a286533a42340044726049cd7d913fc8cae5b8e3ed4ab62a4f7",
+  "contract_dropped_paths": {
+    "count": 0,
+    "distinct_keys": [],
+    "paths": []
+  },
+  "source_package": {
+    "Notices_20261103_from_82ca87d2.json": {
+      "bytes": 1394667,
+      "sha256": "09d15aec4f64f2d61411e8f5641c56aad24b26587cc2bf7fdef2d58cabccda83"
+    },
+    "Notices_20261103_from_82ca87d2.md": {
+      "bytes": 25777,
+      "sha256": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9"
+    },
+    "Notices_20261103_from_82ca87d2.png": {
+      "bytes": 715721,
+      "sha256": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8"
+    }
+  },
+  "published_assets": {
+    "snapshot.json": {
+      "bytes": 1394667,
+      "chunks": 6,
+      "sha256": "0e5ee4f34139d6958e46a1e62113a5ce6694a313dda04ef74dfc358df2b9d8eb"
+    },
+    "notes.md": {
+      "bytes": 25777,
+      "chunks": 1,
+      "sha256": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9"
+    },
+    "snapshot.png": {
+      "bytes": 715721,
+      "chunks": 3,
+      "sha256": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8"
+    }
+  },
+  "reporting_transparency_passthrough": "rt-15b77d9f8bcb0758d20139d52cde93a865707f0ca76067dc48bd46a121b4d41d",
+  "validation": {
+    "blocked": false,
+    "fail": 0,
+    "warn": 0,
+    "pass": 11
+  },
+  "public_files": {
+    "about/index.html": "ebcf4be8b535c3127683ce35ebd04035945c82a8e782c1d428729975417200e5",
+    "api/delivery-status": "9227e9cbb31fb84e115a2af696d37bea70f01caa53059426a12790df57ec239f",
+    "api/refresh-status": "bbba14ae35f1f1f144a3bb56783cd2b6ed256304aada6083e7395c573401e4cd",
+    "api/reporting-transparency": "b71e912f2796af6f008ac8cd7840161b4d8e90dff0f2c48d9891a9676dd13019",
+    "api/snapshot": "0e5ee4f34139d6958e46a1e62113a5ce6694a313dda04ef74dfc358df2b9d8eb",
+    "app.js": "8366613e2c2bf62bf7afcb8dbb005303c629af6ee1be05eb11e9a3b1f791b726",
+    "civic-telemetry-mark.svg": "14ab1e3854377cad80ce960c1f250dd96e669f6874fa849ac7deb4edc9c3e3f8",
+    "congress.css": "fda9d90007dac23c45ff1cfaddbc3a280f99f8d1ca04e934e03a5dfa88127a73",
+    "congress.js": "44de97f644b98003dddf5e1be751bf4ea8a688a78c34d7b75ab59367e60a9a63",
+    "coverage.json": "88f75bcbea34120ff24de46f2a5b5f9e357aff5d0cf392fc722f4bd5c8282243",
+    "data.json": "0e5ee4f34139d6958e46a1e62113a5ce6694a313dda04ef74dfc358df2b9d8eb",
+    "delivery-audit.css": "574b0f20a4df65a1302af979a2decf7ef0f82e7b221f51045c5af02e292cc47c",
+    "delivery-audit.js": "ef91cd23910a884d5950f1c4506176f2e2658557d715ce2a47c6f58300c34059",
+    "edition.txt": "352f7173c0c66c37db0f610ddfe76e62d4dc24826e21e3dd91461744db7d42cb",
+    "election-context.js": "7dac55e0caf9866146d7191169fa0d49c27e3fb900083f4fe0bef055d2957cd6",
+    "favicon.ico": "31c65d550340dc809364721099a8dfbca58154be1a6ad0c39428671b11af679a",
+    "index.html": "24d1233511e1f32b202efb276296548c8e17716b9e7da39143b43a37d586444d",
+    "national.css": "bbf5957df6ae125e2593d663d22afdec5fabf981fca1cfffa31567ae5f2fe9e9",
+    "national.js": "742b8904f84d594ac2de1c6a74c4297924ef38924d8d9503a3ba201ad897dd51",
+    "notes.md": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9",
+    "reporting-transparency.css": "2e359dcfc43025fc537c793596ed7f6d9490946e0162086164edaa14fd7bb316",
+    "reporting-transparency.js": "ab5d4d89781a704a0e21f81c90b5b66212efe282e03e2674370b5385bfc66d57",
+    "reporting-transparency.json": "b71e912f2796af6f008ac8cd7840161b4d8e90dff0f2c48d9891a9676dd13019",
+    "returns.css": "738de2b84aeefd36c622e70194bb796de7db845d5f35961adeae3d4e0718ee69",
+    "returns.js": "1feef915dabfde7b9e2932fb5a41871e6370f7abe0edcb4c8cd41ee0b4855e32",
+    "snapshot.png": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8",
+    "styles.css": "ba8456fecf421b016a9dec0df931096267916f6fe419ae1987cbc7238bdbd2b4",
+    "texas-heritage.svg": "5b6161063945d6a4ccd44c71f17447f0cbcdb4ed1ad273692bdbc68fce0d18b6",
+    "us-congress-emblem.svg": "0c52bd196767815aaf04818601681c1b1601eb933848b736d1b18610f71bde56"
+  }
+}
