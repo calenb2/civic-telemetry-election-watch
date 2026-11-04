@@ -116,17 +116,19 @@
     return `<table><thead><tr><th>Race</th><th>Called for</th><th>Outlet</th><th>Time</th><th>Link</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
 
+  const electionDayLabel = ed => { const m = /^(\d{2})(\d{2})(\d{4})$/.exec(String(ed || '')); if (!m) return ''; const dt = new Date(Date.UTC(+m[3], +m[1] - 1, +m[2])); return Number.isNaN(dt.getTime()) ? '' : ' · ' + new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', month: 'long', day: 'numeric' }).format(dt).toUpperCase(); };
+
   function render(d, c, v, nat) {
     if (!mount) return;
     if (!d || d.status !== 'active') {
       const why = d && d.status === 'awaiting_activation' ? 'The Secretary of State activates election-night returns after polls close (7 p.m. Central). This panel switches on automatically; counts will appear here with the SOS data version and reporting progress.'
         : d && d.status === 'unreachable' ? 'The Secretary of State returns feed could not be reached at the last check.' : 'Returns stream unavailable.';
-      mount.innerHTML = `<div class="rt-lede"><div class="eyebrow">01 / ELECTION NIGHT RETURNS · NOVEMBER 3</div></div><div class="rt-head"><h3>Election night returns</h3><span class="badge">${esc((d && d.status) || 'unavailable')}</span></div><p>${why}</p><p class="rt-foot">Source: <a href="https://results.texas-election.com/" target="_blank" rel="noopener">Texas Secretary of State — Election Night Returns ↗</a>${d && d.checked_at ? ' · checked ' + central(d.checked_at) : ''}</p>`;
+      mount.innerHTML = `<div class="rt-lede"><div class="eyebrow">01 / ELECTION NIGHT RETURNS</div></div><div class="rt-head"><h3>Election night returns</h3><span class="badge">${esc((d && d.status) || 'unavailable')}</span></div><p>${why}</p><p class="rt-foot">Source: <a href="https://results.texas-election.com/" target="_blank" rel="noopener">Texas Secretary of State — Election Night Returns ↗</a>${d && d.checked_at ? ' · checked ' + central(d.checked_at) : ''}</p>`;
       return;
     }
     const rep = d.reporting || {};
     const bar = (x, label) => { const a = x && x.reported, b = x && x.total; const w = (a && b) ? Math.round(100 * a / b) : 0; return `<div class="rt-bar"><span>${label}</span><div><i style="width:${w}%"></i></div><b>${n(a)} / ${n(b)}</b></div>`; };
-    mount.innerHTML = `<div class="rt-lede"><div class="eyebrow">01 / ELECTION NIGHT RETURNS · NOVEMBER 3</div><h2>${n(rep.counties && rep.counties.reported)} of ${n(rep.counties && rep.counties.total)} counties have uploaded results to the Secretary of State.</h2><p>Preliminary and unofficial. Counts change as counties report and may be revised in the canvass. Civic Telemetry reports what each source said and when; it does not call races.</p></div><div class="rt-head"><h3>Election night returns</h3><span class="badge">unofficial · SOS data v${esc(d.source.data_version)}</span></div>
+    mount.innerHTML = `<div class="rt-lede"><div class="eyebrow">01 / ELECTION NIGHT RETURNS${electionDayLabel(d.source && d.source.election_date)}</div><h2>${n(rep.counties && rep.counties.reported)} of ${n(rep.counties && rep.counties.total)} counties have uploaded results to the Secretary of State.</h2><p>Preliminary and unofficial. Counts change as counties report and may be revised in the canvass. Civic Telemetry reports what each source said and when; it does not call races.</p></div><div class="rt-head"><h3>Election night returns</h3><span class="badge">unofficial · SOS data v${esc(d.source.data_version)}</span></div>
       <p class="rt-foot">${esc(d.election && d.election.name)} · SOS last updated ${sosTime(d.sos_last_updated)} · fetched ${central(d.fetched_at)}${d.carried ? ' · <b>last-known</b> — SOS platform did not answer at ' + central(d.last_checked_at) + (d.source_error && d.source_error.detail && d.source_error.detail.status ? ' (HTTP ' + esc(d.source_error.detail.status) + ')' : '') + '; figures are the last successful fetch' : ''}</p>
       ${bar(rep.counties, 'Counties uploaded to SOS')}${(rep.precincts && rep.precincts.total >= 1000) ? bar(rep.precincts, 'Precincts reporting') : ''}${(rep.polling_locations && rep.polling_locations.total) ? bar(rep.polling_locations, 'Polling locations reporting') : ''}
       ${aggregatorTables(v)}
@@ -155,7 +157,7 @@
     if (!noticesCache) { try { noticesCache = await getJSON('/api/notices'); } catch (e) { noticesCache = null; } }
     render(d, c, v, nat);
     window.CT_RETURNS_FETCHED = (d && d.status === 'active') ? d.fetched_at : null;
-    const mt = document.getElementById('edition-date'); if (mt && window.CT_RETURNS_FETCHED) mt.textContent = 'Returns fetched ' + (typeof centralTime === 'function' ? centralTime(window.CT_RETURNS_FETCHED) : central(window.CT_RETURNS_FETCHED)) + ' · analysis reviewed ' + (typeof DATA !== 'undefined' && DATA ? DATA.reviewed_at : '');
+    if (window.CivicMasthead) { window.CivicMasthead.update(); } else { const mt = document.getElementById('edition-date'); if (mt && window.CT_RETURNS_FETCHED) mt.textContent = 'Returns fetched ' + (typeof centralTime === 'function' ? centralTime(window.CT_RETURNS_FETCHED) : central(window.CT_RETURNS_FETCHED)) + ' · analysis reviewed ' + (typeof DATA !== 'undefined' && DATA ? DATA.reviewed_at : ''); }
     if (mount && noticesCache) mount.insertAdjacentHTML('beforeend', noticesHTML(noticesCache));
     const congress = document.getElementById('ct-congress');
     if (mount && congress && !congress.hidden) mount.hidden = true;

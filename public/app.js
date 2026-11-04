@@ -17,6 +17,9 @@ const sharedCountyCutoff=(names=primary)=>{const cutoffs=[...new Set(DATA.counti
 const raceMovement=()=>{const a=assessments(),moves=a.map(x=>x.movement);return moves.every(m=>m==='unchanged')?'Race reads unchanged.':moves.some(m=>m==='toward D'||m==='toward R')?'Race assessments updated.':'Race movement not comparable.'};
 const evidenceText=party=>{const p=DATA.polls||[],out=[];for(const [key,label] of [['sen','Senate'],['gov','Governor']]){const margins=p.map(x=>party==='D'?x[key+'D']-x[key+'R']:x[key+'R']-x[key+'D']).filter(v=>Number.isFinite(v)&&v>0);if(margins.length){const r1=v=>Math.round(v*10)/10,min=r1(Math.min(...margins)),max=r1(Math.max(...margins));out.push(`${label}: featured ${party} leads of ${min===max?min:min+'–'+max} points.`)}}return out.join(' ')||'No favorable candidate lead appears in the featured polls.'};
 const pollPeriods=()=>[...new Set((DATA.polls||[]).map(p=>`${p.name}: field ${p.field}; release ${p.published}${p.publication_time?' '+p.publication_time:' (time unverified)'}`))].join(' · ');
+const centralLong=value=>{if(!value)return 'Not yet verified';const d=new Date(value);if(Number.isNaN(d.getTime()))return String(value);
+ const p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',month:'long',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true,timeZoneName:'short'}).formatToParts(d).reduce((a,x)=>(a[x.type]=x.value,a),{});
+ return p.month+' '+p.day+', '+p.year+' · '+p.hour+':'+p.minute+' '+(String(p.dayPeriod).toLowerCase()==='pm'?'p.m.':'a.m.')+' '+p.timeZoneName};
 const centralTime=value=>{if(!value)return 'Not yet verified';const d=new Date(value);return Number.isNaN(d.getTime())?String(value):new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',dateStyle:'medium',timeStyle:'short'}).format(d)+' Central'};
 
 const legend=()=>`<div class="legend"><span class="d">Democratic-favorable</span><span class="r">Republican-favorable</span><span class="mixed">Mixed / no clear advantage</span><span>Insufficient evidence</span></div><p class="small">Colors describe evidence within its stated scope. Gray means missing, stale, unverified or incomparable data, not a neutral result.</p>`;
@@ -239,19 +242,20 @@ function wireTabs(){document.querySelectorAll('[data-open]').forEach(b=>b.onclic
 function refreshTimeLabels(){
  if(!DATA)return;
  const snapshot=DATA.reviewed_at;
+ const snapshotLabel=(window.CivicPhase&&window.CivicPhase.snapshotLabel(DATA.reviewed_at_iso||DATA.reviewed_at))||'Pre-election snapshot';
  document.querySelectorAll('a[href]').forEach(a=>{try{const u=new URL(a.getAttribute('href'),location.origin);if(u.origin===location.origin&&['/snapshot.png','/notes.md','/data.json'].includes(u.pathname))a.setAttribute('href',editionURL(u.pathname));}catch{}});
  const fullDate=v=>{const x=String(v||'Not verified');return /20\d{2}/.test(x)?x:x+' · 2026';};
  let banner=document.getElementById('snapshot-status');
  if(!banner){banner=document.createElement('aside');banner.id='snapshot-status';banner.setAttribute('aria-label','Data date and refresh status');document.querySelector('.nav').after(banner);}
  const attempt=REFRESH.lastAttempt||{},failed=refreshError==='Update service unavailable'||attempt.status==='failed',state=usingFallback?'Saved fallback snapshot':failed?'Last valid snapshot retained':refreshError?'Publication status unavailable':REFRESH.lastSuccessfulRefresh?'Last verified publication':'Refresh connection awaiting verification';
- banner.innerHTML='<div class="refresh-top"><span><b>Data reviewed</b> '+esc(snapshot)+'</span><span><b>Site edition published</b> '+esc(centralTime(REFRESH.lastSuccessfulRefresh))+'</span></div>'+(usingFallback||failed?'<p class="refresh-published">Latest update delayed; displaying the last valid edition.</p>':'');
+ banner.innerHTML='<div class="refresh-top"><span><b>Data reviewed</b> '+esc(snapshot)+'</span><span><b>Site edition published</b> '+esc(centralLong(REFRESH.lastSuccessfulRefresh))+'</span></div>'+(usingFallback||failed?'<p class="refresh-published">Latest update delayed; displaying the last valid edition.</p>':'');
  try{if(window.DeliveryAudit)window.DeliveryAudit.mount();}catch(error){console.error('Delivery audit mount failed',error);}
 
  const footer=document.getElementById('refresh-note');if(footer)footer.textContent=state+'. Each observation retains its own source and reporting cutoff.';
- const mastheadTime=document.getElementById('edition-date');if(mastheadTime){mastheadTime.textContent=window.CT_RETURNS_FETCHED?('Returns fetched '+centralTime(window.CT_RETURNS_FETCHED)+' · analysis reviewed '+snapshot):snapshot;mastheadTime.removeAttribute('datetime');}
+ const stampMasthead=()=>{const mastheadTime=document.getElementById('edition-date');if(!mastheadTime)return;mastheadTime.textContent=window.CT_RETURNS_FETCHED?('Returns fetched '+centralLong(window.CT_RETURNS_FETCHED)+' · analysis reviewed '+snapshot):snapshot;mastheadTime.removeAttribute('datetime');};window.CivicMasthead={update:stampMasthead};stampMasthead();
 
- document.querySelectorAll('.nav-tab').forEach(b=>{let stamp=b.querySelector('.tab-time');if(!stamp){stamp=document.createElement('small');stamp.className='tab-time';b.append(stamp);}stamp.textContent='Pre-election snapshot · '+snapshot;});
- document.querySelectorAll('[data-navigation-time]').forEach(stamp=>{stamp.textContent='Pre-election snapshot · '+snapshot;});
+ document.querySelectorAll('.nav-tab').forEach(b=>{let stamp=b.querySelector('.tab-time');if(!stamp){stamp=document.createElement('small');stamp.className='tab-time';b.append(stamp);}stamp.textContent=snapshotLabel+' · '+snapshot;});
+ document.querySelectorAll('[data-navigation-time]').forEach(stamp=>{stamp.textContent=snapshotLabel+' · '+snapshot;});
  prepareNavigationAnchors();
  document.querySelectorAll('.page').forEach(page=>{
   const nodes=page.querySelectorAll('section.panel,.summary-total,.scope-card,.daily-brief,.evidence-brief-card,.coverage-summary,.summary-next,.next-row');
@@ -268,13 +272,13 @@ function refreshTimeLabels(){
     cutoff=r?fullDate(r.cutoff):'No verified source cutoff for this selection.';
    }
    if(page.id==='history'){const name=document.getElementById('history-county')?.value;const yr=document.getElementById('history-year')?.value;const rows=(DATA.history[name]||[]).filter(r=>r.count!=null&&(yr==='all'||String(r.year)===yr));cutoff=rows.length?rows.map(r=>fullDate(r.cutoff)).join(' · '):'No verified historical cutoff for this selection.';}
-   if(node.classList.contains('coverage-summary')||node.id==='coverage-roster')cutoff='Coverage register: '+centralTime(DATA.coverage.built_at)+'; source observations retain their own dates.';
+   if(node.classList.contains('coverage-summary')||node.id==='coverage-roster')cutoff='Coverage register: '+centralLong(DATA.coverage.built_at)+'; source observations retain their own dates.';
    if(node.querySelector('.composition-stack'))cutoff='Publisher dated '+fullDate(DATA.statewide.as_of)+'. Mixed county cutoffs; publication time not supplied.';
    if(node.querySelector('.county-kpis')&&page.id==='evidence')cutoff='Original baseline: October 19, 2026, first-day in-person voting. Reporting hour not verified.';
    if(node.classList.contains('summary-next')||node.classList.contains('next-row'))cutoff='Election Day: November 3, 2026; then counting and certification. This calendar does not advance the displayed research review time.';
    let stamp=node.querySelector(':scope > .section-time');
    if(!stamp){stamp=document.createElement('div');stamp.className='section-time';node.prepend(stamp);}
-   stamp.innerHTML='<span><b>Pre-election snapshot</b> '+esc(snapshot)+'</span><span><b>Source / period</b> '+esc(cutoff)+'</span>';
+   stamp.innerHTML='<span><b>'+esc(snapshotLabel)+'</b> '+esc(snapshot)+'</span><span><b>Source / period</b> '+esc(cutoff)+'</span>';
   });
  });
 }
