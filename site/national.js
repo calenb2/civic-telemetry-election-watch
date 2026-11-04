@@ -17,10 +17,13 @@
     if (!ch || ch.status !== 'active') return `<div class="nt-balance"><h4>${esc(label)}</h4><p class="rt-foot">Stream unavailable.</p></div>`;
     const calls = ch.calls_by_party || {};
     const parts = Object.keys(calls).sort().map(p => `${chip(p)} ${n(calls[p])}`).join(' &nbsp; ');
-    return `<div class="nt-balance ${ch.stale ? 'nt-stale' : ''}"><h4>${esc(label)}</h4>
+    const err = ch.source_error || {};
+    const why = err.kind === 'http' ? 'HTTP ' + esc(err.status) : err.kind === 'timeout' ? 'timed out' : err.kind ? esc(err.kind) : 'unreachable';
+    const carried = ch.carried ? ` · <b>last-known</b> — aggregator ${why} on the latest fetch; figures from ${central(ch.carried_from_fetch)}` : '';
+    return `<div class="nt-balance ${(ch.stale || ch.carried) ? 'nt-stale' : ''}"><h4>${esc(label)}</h4>
       <div class="nt-big">${ch.regions_called} <small>of ${ch.regions_total} called</small></div>
       <div class="nt-parts">${parts || '<span class="muted">No calls yet</span>'}</div>
-      <p class="rt-foot">Reporting ${pct(ch.percent_reporting)} · updated ${central(ch.last_updated)}${ch.stale ? ' · <b>stale</b>' : ''}</p></div>`;
+      <p class="rt-foot">Reporting ${pct(ch.percent_reporting)} · source updated ${central(ch.last_updated)}${ch.stale ? ' · <b>stale</b>' : ''}${carried}</p></div>`;
   }
 
   function stateTable(ch, title) {
@@ -74,8 +77,12 @@
     page && page.classList.add('ct-live');
     const ch = d.chambers || {};
     const anyStale = Object.values(ch).some(x => x.stale);
-    mount.innerHTML = `<div class="rt-head"><h3>National results</h3><span class="badge">unofficial · via civicAPI · fetched ${central(d.fetched_at)}</span></div>
+    const carriedKeys = Object.keys(ch).filter(k => ch[k] && ch[k].carried);
+    const downKeys = Object.keys(ch).filter(k => ch[k] && ch[k].status !== 'active');
+    mount.innerHTML = `<div class="rt-head"><h3>National results</h3><span class="badge">unofficial · via civicAPI · checked ${central(d.fetched_at)}</span></div>
       ${anyStale ? '<p class="callout"><strong>Stale feed.</strong> One or more chambers have not updated within the stale window since polls began closing. Figures shown are last-known, not live.</p>' : ''}
+      ${carriedKeys.length ? `<p class="callout"><strong>Aggregator intermittent.</strong> civicAPI did not answer for ${esc(carriedKeys.join(', '))} on the latest check (after retries). Those cards show the last successfully fetched figures, labelled with their fetch time; they refresh automatically when the aggregator answers again.</p>` : ''}
+      ${downKeys.length ? `<p class="callout"><strong>No data yet for ${esc(downKeys.join(', '))}.</strong> civicAPI has not answered for this chamber and nothing earlier is held to show.</p>` : ''}
       <div class="nt-grid">${balance(ch.senate, 'U.S. Senate')}${balance(ch.house, 'U.S. House')}${balance(ch.governors, 'Governors')}</div>
       ${stateTable(ch.senate, 'U.S. Senate by state')}
       ${stateTable(ch.governors, 'Governors by state')}
@@ -106,7 +113,7 @@
     const header = page.querySelector('header');
     header ? header.after(mount) : page.prepend(mount);
     refresh();
-    timer = setInterval(() => { if (!document.hidden && !page.hidden) refresh(); }, 120000);
+    timer = setInterval(() => { if (!document.hidden && !page.hidden) refresh(); }, 60000);
   }
   window.NationalPanel = { mount: mountPanel, refresh };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(mountPanel, 900));
