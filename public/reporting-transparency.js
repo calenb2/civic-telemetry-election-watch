@@ -18,7 +18,7 @@
   const labels = {official:'Official source',publisher_reproduced:'Publisher reproduction',reported_only:'Reported only',inferred:'Inferred',open:'Open',explained:'Explained',corrected:'Corrected',unresolved:'Unresolved',not_comparable:'Not comparable',retrieved:'Retrieved',partial:'Partial access',blocked:'Access blocked',unavailable:'Unavailable',documented:'Documented time',first_observed:'First observed',unknown:'Time unknown'};
   const label = value => labels[value] || String(value || 'Unknown').replace(/_/g,' ');
   const valid = value => value && (value.status === 'not_initialized' || (value.status === 'published' && versionPattern.test(value.version) && value.ledger && Array.isArray(value.ledger.cases) && Array.isArray(value.ledger.source_checks) && Array.isArray(value.ledger.coverage?.reviewed_counties) && Number.isFinite(Date.parse(value.reviewed_at))));
-  const cadence = 'Every 2 hours through Nov 3; every 12 hours from Nov 4 · America/Chicago';
+  const cadence = 'This upstream reporting-review stream was retired when the site moved to the OrbitWorks pipeline on Nov 3, 2026; the last review is shown above and the log is retained for the record. Election-night returns are verified separately in the returns and verification streams';
   const stale = value => {
     if (value?.freshness === 'stale') return true;
     if (!value?.reviewed_at) return false;
@@ -27,7 +27,7 @@
     const period = Date.now() < Date.parse('2026-11-04T00:00:00-06:00') ? 2 : 12;
     return Date.now() - Date.parse(value.reviewed_at) > (period + 1) * 3600000;
   };
-  const state = () => failure && current?.status !== 'published' ? 'Reporting review unavailable' : failure || current?.last_attempt?.status === 'failed' ? 'Last successful review retained' : current?.status !== 'published' ? 'Baseline pending' : stale(current) ? 'Review is older than the expected interval' : 'Dated evidence review';
+  const state = () => failure && current?.status !== 'published' ? 'Reporting review unavailable' : failure || current?.last_attempt?.status === 'failed' ? 'Last successful review retained' : current?.status !== 'published' ? 'Baseline pending' : stale(current) ? 'Frozen upstream record (dated)' : 'Dated evidence review';
   const icon = '<img src="'+esc(typeof licensedIconSources !== 'undefined' ? licensedIconSources.evidence : '/icons/evidence.svg')+'" alt="" aria-hidden="true" class="rt-icon">';
   const formatNumber = value => Number.isSafeInteger(value) ? value.toLocaleString('en-US') : 'Not verified';
   function timeBlock(value) {
@@ -74,7 +74,7 @@
     const counties = available ? new Set(ledger.coverage.reviewed_counties).size : null;
     const currentState = state();
     const title = '<div class="section-head"><div><div class="eyebrow">ACCOUNTABILITY · DOCUMENTED EVIDENCE</div><h2>'+icon+'<span>Reporting transparency</span></h2><p>What was reported, when it appeared, and how differences were resolved.</p></div><span class="rt-status'+(failure || stale(value)?' rt-warning':'')+'">'+esc(currentState)+'</span></div>';
-    const scheduleState = ledger?.schedule?.enabled === true ? 'Enabled' : ledger?.schedule?.enabled === false ? 'Paused' : 'Not yet confirmed';
+    const scheduleState = 'Retired (frozen record)';
     const clocks = timeBlock(value)+'<p class="rt-cadence"><b>Research schedule · '+scheduleState+':</b> '+cadence+'.<br>Publication follows a completed, validated check. Source cutoffs remain attached to each record.</p>';
     const intro = available ? '<p class="rt-lead">'+esc(ledger.summary)+'</p><div class="rt-metrics"><div><b>'+counties+' <small>/ 254</small></b><span>Counties with source reviews</span></div><div><b>'+cases.length+'</b><span>Cases documented in this log</span></div><div><b>'+sources.length+'</b><span>Source checks retained</span></div></div><p class="rt-measure-limit">A source review is not full reconciliation. No logged case does not mean no discrepancies exist. Missing times remain unknown.</p>' : '<div class="rt-empty"><strong>Evidence collection is being established.</strong><p>No reporting baseline is available in this view. Exact county–state communication times have not been established.</p></div>';
     const download = available && versionPattern.test(value.version) ? '<a class="rt-download" href="/reporting-transparency.json?version='+encodeURIComponent(value.version)+'">Download this evidence log <span aria-hidden="true">↓</span></a>' : '';

@@ -155,7 +155,7 @@
     if (!noticesCache) { try { noticesCache = await getJSON('/api/notices'); } catch (e) { noticesCache = null; } }
     render(d, c, v, nat);
     window.CT_RETURNS_FETCHED = (d && d.status === 'active') ? d.fetched_at : null;
-    const mt = document.getElementById('edition-date'); if (mt && window.CT_RETURNS_FETCHED) mt.textContent = 'Returns fetched ' + central(window.CT_RETURNS_FETCHED) + ' · analysis reviewed ' + (typeof DATA !== 'undefined' && DATA ? DATA.reviewed_at : '');
+    const mt = document.getElementById('edition-date'); if (mt && window.CT_RETURNS_FETCHED) mt.textContent = 'Returns fetched ' + (typeof centralTime === 'function' ? centralTime(window.CT_RETURNS_FETCHED) : central(window.CT_RETURNS_FETCHED)) + ' · analysis reviewed ' + (typeof DATA !== 'undefined' && DATA ? DATA.reviewed_at : '');
     if (mount && noticesCache) mount.insertAdjacentHTML('beforeend', noticesHTML(noticesCache));
     const congress = document.getElementById('ct-congress');
     if (mount && congress && !congress.hidden) mount.hidden = true;
