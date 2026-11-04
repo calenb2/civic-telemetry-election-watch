@@ -11,6 +11,7 @@
   const central = iso => { const d = new Date(iso); return isNaN(d) ? esc(iso) : d.toLocaleString('en-US', { timeZone: 'America/Chicago', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' }); };
   // SOS publishes 'Nov 04, 2026 01:28:46' in UTC with no zone marker; show it in Central, keep the raw string on hover.
   const sosTime = s => { const m = /^([A-Za-z]{3}) (\d{1,2}), (\d{4}) (\d{1,2}):(\d{2}):(\d{2})$/.exec(String(s || '').trim()); if (!m) return esc(s); const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(m[1]); if (mo < 0) return esc(s); const d = new Date(Date.UTC(+m[3], mo, +m[2], +m[4], +m[5], +m[6])); return `<span title="SOS clock: ${esc(s)} UTC">${central(d.toISOString())}</span>`; };
+  const countyName = s => String(s || '').replace(/\bMclennan\b/, 'McLennan').replace(/\bDewitt\b/, 'DeWitt').replace(/\bMcmullen\b/, 'McMullen').replace(/\bMcculloch\b/, 'McCulloch');
   let mount = null, timer = null;
 
   async function getJSON(url) {
@@ -30,7 +31,7 @@
   // opposite way from every outlet. Say so, and put the aggregator's statewide figures beside the SOS ones.
   function crossCheck(d, v) {
     const rep = d.reporting || {}, cr = rep.counties || {};
-    const missing = (d.counties || []).filter(c => !(c.races || []).some(r => r.total_votes > 0)).map(c => c.county);
+    const missing = (d.counties || []).filter(c => !(c.races || []).some(r => r.total_votes > 0)).map(c => countyName(c.county));
     const comps = ((v && v.comparisons) || []).filter(c => c.state === 'TX' && c.official && c.aggregator);
     const partial = cr.reported != null && cr.total && cr.reported < cr.total;
     if (!partial && !comps.some(c => (c.flags || []).length)) return '';
@@ -53,7 +54,7 @@
     const rows = d.counties.slice().sort((a, b) => (senateVotes(b) || 0) - (senateVotes(a) || 0)).map(c => {
       const sv = senateVotes(c);
       const cells = key.map(id => { const r = c.races.find(x => x.race_id === id); if (!r || !r.leader) return '<td class="muted">—</td>'; return `<td><span class="rt-chip ${pclass(r.leader.party)}">${esc(party(r.leader.party))}</span> ${esc(r.leader.name.split('/')[0])} <span class="muted">+${n(r.margin_votes)}</span></td>`; }).join('');
-      return `<tr><td>${esc(c.county)}</td><td class="num">${sv ? n(sv) : '<span class="muted">not in SOS feed yet</span>'}</td>${cells}</tr>`;
+      return `<tr><td>${esc(countyName(c.county))}</td><td class="num">${sv ? n(sv) : '<span class="muted">not in SOS feed yet</span>'}</td>${cells}</tr>`;
     }).join('');
     return `<table class="rt-counties"><thead><tr><th>County</th><th class="num">Votes in U.S. Senate race</th>${head}</tr></thead><tbody>${rows}</tbody></table><p class="rt-foot">A county shows "not in SOS feed yet" until its results reach the Secretary of State's platform; counties publish to their own sites first.</p>`;
   }

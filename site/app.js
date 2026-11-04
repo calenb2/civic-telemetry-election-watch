@@ -1,5 +1,5 @@
 'use strict';
-const $=s=>document.querySelector(s),fmt=v=>v==null?'Not verified':Number(v).toLocaleString('en-US'),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s),fmt=v=>v==null?'Not verified':Number(v).toLocaleString('en-US'),tidy=s=>/^(https?:|\/|#)/.test(String(s))||/https?:\/\//.test(String(s))?String(s):String(s).replace(/\b(Through|most|some|and|through)(Oct(?:ober)?|Nov(?:ember)?)(\d{1,2})\b/g,'$1 $2 $3').replace(/\b(Oct(?:ober)?|Nov(?:ember)?)(\d{1,2})\b/g,'$1 $2'),esc=s=>tidy(String(s??'')).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let DATA, activeTab='overview', countyName='Dallas', REFRESH={}, SNAPSHOT_VERSION=null, usingFallback=false, refreshError=null, refreshInFlight=false;
 const primary=['Dallas','Tarrant','Travis','Harris','Bexar','El Paso','Lubbock'];
 const modeLabel={total:'In person + mail',ip:'Early in person',mail:'Mail (source-defined)'};
@@ -15,7 +15,7 @@ const scopeHTML=(interactive=false)=>`<div class="scope-grid ${interactive?'summ
 const scopeCards=()=>scopeHTML(false);
 const sharedCountyCutoff=(names=primary)=>{const cutoffs=[...new Set(DATA.counties.filter(c=>names.includes(c.name)).map(c=>c.cutoff||'Cutoff unverified'))];return cutoffs.length===1?'Shared date label: '+cutoffs[0]+'; exact cutoffs unverified':'Mixed county cutoffs — see each bar'};
 const raceMovement=()=>{const a=assessments(),moves=a.map(x=>x.movement);return moves.every(m=>m==='unchanged')?'Race reads unchanged.':moves.some(m=>m==='toward D'||m==='toward R')?'Race assessments updated.':'Race movement not comparable.'};
-const evidenceText=party=>{const p=DATA.polls||[],out=[];for(const [key,label] of [['sen','Senate'],['gov','Governor']]){const margins=p.map(x=>party==='D'?x[key+'D']-x[key+'R']:x[key+'R']-x[key+'D']).filter(v=>Number.isFinite(v)&&v>0);if(margins.length){const min=Math.min(...margins),max=Math.max(...margins);out.push(`${label}: featured ${party} leads of ${min===max?min:min+'–'+max} points.`)}}return out.join(' ')||'No favorable candidate lead appears in the featured polls.'};
+const evidenceText=party=>{const p=DATA.polls||[],out=[];for(const [key,label] of [['sen','Senate'],['gov','Governor']]){const margins=p.map(x=>party==='D'?x[key+'D']-x[key+'R']:x[key+'R']-x[key+'D']).filter(v=>Number.isFinite(v)&&v>0);if(margins.length){const r1=v=>Math.round(v*10)/10,min=r1(Math.min(...margins)),max=r1(Math.max(...margins));out.push(`${label}: featured ${party} leads of ${min===max?min:min+'–'+max} points.`)}}return out.join(' ')||'No favorable candidate lead appears in the featured polls.'};
 const pollPeriods=()=>[...new Set((DATA.polls||[]).map(p=>`${p.name}: field ${p.field}; release ${p.published}${p.publication_time?' '+p.publication_time:' (time unverified)'}`))].join(' · ');
 const centralTime=value=>{if(!value)return 'Not yet verified';const d=new Date(value);return Number.isNaN(d.getTime())?String(value):new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',dateStyle:'medium',timeStyle:'short'}).format(d)+' Central'};
 
