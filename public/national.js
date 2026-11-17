@@ -72,15 +72,17 @@
     if (!d || d.status !== 'active') {
       mount.innerHTML = `<div class="rt-head"><h3>National results</h3><span class="badge">${esc((d && d.status) || 'unavailable')}</span></div><p class="rt-foot">The national results stream could not be read at the last check.</p>${notices(nt, ['national'])}`;
       page && page.classList.remove('ct-live');
+      const badge0 = page && page.querySelector('header .badge'); if (badge0) badge0.textContent = 'Unofficial · aggregator data';
       return;
     }
     page && page.classList.add('ct-live');
     const ch = d.chambers || {};
-    const anyStale = Object.values(ch).some(x => x.stale);
+    const anyStale = Object.values(ch).some(x => x && x.stale);
+    const staleSince = anyStale ? Object.values(ch).filter(x => x && x.stale && x.last_updated).map(x => x.last_updated).sort().pop() : null;
     const carriedKeys = Object.keys(ch).filter(k => ch[k] && ch[k].carried);
     const downKeys = Object.keys(ch).filter(k => ch[k] && ch[k].status !== 'active');
     mount.innerHTML = `<div class="rt-head"><h3>National results</h3><span class="badge">unofficial · via civicAPI · checked ${central(d.fetched_at)}</span></div>
-      ${anyStale ? '<p class="callout"><strong>Stale feed.</strong> One or more chambers have not updated within the stale window since polls began closing. Figures shown are last-known, not live.</p>' : ''}
+      ${anyStale ? `<p class="callout"><strong>Aggregator snapshot, unofficial.</strong> civicAPI has not changed its figures since ${central(staleSince)}. The cards show the aggregator's last update, not a live count; counting and certification continue in the states on their own schedules.</p>` : ''}
       ${carriedKeys.length ? `<p class="callout"><strong>Aggregator intermittent.</strong> civicAPI did not answer for ${esc(carriedKeys.join(', '))} on the latest check (after retries). Those cards show the last successfully fetched figures, labelled with their fetch time; they refresh automatically when the aggregator answers again.</p>` : ''}
       ${downKeys.length ? `<p class="callout"><strong>No data yet for ${esc(downKeys.join(', '))}.</strong> civicAPI has not answered for this chamber and nothing earlier is held to show.</p>` : ''}
       <div class="nt-grid">${balance(ch.senate, 'U.S. Senate')}${balance(ch.house, 'U.S. House')}${balance(ch.governors, 'Governors')}</div>
@@ -91,8 +93,8 @@
       ${callsTable(c)}
       <p class="rt-foot">${(d.rules || []).map(esc).join(' ')}</p>
       ${notices(nt, ['national', 'verification'])}`;
-    const badge = page && page.querySelector('header .badge'); if (badge) badge.textContent = 'Live · unofficial returns';
-    const lede = page && page.querySelector('header p'); if (lede) lede.textContent = 'Senate, House and governor returns nationwide, with official state feeds checked against the aggregator. Return to Texas at any time.';
+    const badge = page && page.querySelector('header .badge'); if (badge) badge.textContent = anyStale ? 'Unofficial · aggregator snapshot' : 'Live · unofficial returns';
+    const lede = page && page.querySelector('header p'); if (lede) lede.textContent = anyStale ? ('Senate, House and governor figures nationwide as last published by the aggregator (' + central(staleSince) + '), with official state feeds checked against it. Return to Texas at any time.') : 'Senate, House and governor returns nationwide, with official state feeds checked against the aggregator. Return to Texas at any time.';
   }
 
   async function refresh() {
