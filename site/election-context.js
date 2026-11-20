@@ -26,6 +26,7 @@
     }
     Object.entries(guidance).forEach(([id,text])=>{const page=document.getElementById(id);if(!page||!page.children.length)return;let note=page.querySelector('.section-context');if(!note){note=document.createElement('p');note.className='section-context';page.prepend(note);}note.textContent=text;});
   }
+  document.addEventListener('click',e=>{const b=e.target.closest('[data-jump]');if(!b)return;e.preventDefault();if(typeof showTab==='function')showTab('overview',false);setTimeout(()=>{const t=document.getElementById(b.dataset.jump);if(t){t.hidden=false;t.scrollIntoView({behavior:'smooth',block:'start'});}},50);});
   document.addEventListener('DOMContentLoaded',update);
   document.addEventListener('civic:render',update);
   setInterval(update,60000);
