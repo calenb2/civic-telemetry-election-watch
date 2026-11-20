@@ -1,0 +1,89 @@
+{
+  "supersedes": null,
+  "withdrawn_from_public_archive": null,
+  "report_scrub": [],
+  "version": "0adc7ff8f1b6ed4aca59b8a22d41defe8db54e30aa7e220ab594b0410e842189",
+  "reviewed_at_iso": "2026-11-02T17:46:31-06:00",
+  "reviewed_at_display": "November 2, 2026 · 05:46 p.m. CST",
+  "published_at": "2026-11-20T14:44:21.706Z",
+  "actor": "Claude (Claude Duet) for Calen Bedford",
+  "note": "Review labels (Rosie, Nov 20): page leads with Texas Election Review, 2026 general election, purpose line and two paths (See election results, Find my county); data named where it appears (Unofficial election results; Early voting turnout, November 2 archive; Pre-election polling); 254 uploading counties vs 21 turnout counties explained; each clock labelled as its own event; file-hash delivery check renamed Site delivery check, with Verified kept for checks against state data; results flip to Certified only when the SOS feed publishes the official canvass report; browser refresh 60 s to 5 min. publish.py now refuses retired labels.",
+  "normalisations": [
+    "reporting-transparency: 11 upstream origin URL(s) rewritten to the public origin"
+  ],
+  "ui_release": "c94afd2c1d49535fcb60acc0b5181878b0a8b79f0ccaaf4ac5841322dfbedc49",
+  "contract_dropped_paths": {
+    "count": 0,
+    "distinct_keys": [],
+    "paths": []
+  },
+  "source_package": {
+    "Notices_20261103_from_82ca87d2.json": {
+      "bytes": 1394667,
+      "sha256": "09d15aec4f64f2d61411e8f5641c56aad24b26587cc2bf7fdef2d58cabccda83"
+    },
+    "Notices_20261103_from_82ca87d2.md": {
+      "bytes": 25777,
+      "sha256": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9"
+    },
+    "Notices_20261103_from_82ca87d2.png": {
+      "bytes": 715721,
+      "sha256": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8"
+    }
+  },
+  "published_assets": {
+    "snapshot.json": {
+      "bytes": 1394667,
+      "chunks": 6,
+      "sha256": "54787117e453dd9ad063ec3d66482347b3120409605a96e1e9f12309507ca3c8"
+    },
+    "notes.md": {
+      "bytes": 25777,
+      "chunks": 1,
+      "sha256": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9"
+    },
+    "snapshot.png": {
+      "bytes": 715721,
+      "chunks": 3,
+      "sha256": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8"
+    }
+  },
+  "reporting_transparency_passthrough": "rt-15b77d9f8bcb0758d20139d52cde93a865707f0ca76067dc48bd46a121b4d41d",
+  "validation": {
+    "blocked": false,
+    "fail": 0,
+    "warn": 0,
+    "pass": 11
+  },
+  "public_files": {
+    "about/index.html": "ebcf4be8b535c3127683ce35ebd04035945c82a8e782c1d428729975417200e5",
+    "api/delivery-status": "333cd435ccff915bcf1c9456a42eea979045923df19155cc76448f2f46df96d8",
+    "api/refresh-status": "fb3ae48acb9540af933db1686448ba673d06587f2ae61cbedbaaec5224ab9c98",
+    "api/reporting-transparency": "b71e912f2796af6f008ac8cd7840161b4d8e90dff0f2c48d9891a9676dd13019",
+    "api/snapshot": "54787117e453dd9ad063ec3d66482347b3120409605a96e1e9f12309507ca3c8",
+    "app.js": "3ca27a36fa1f87f7ddb8b3232b97facac5e1f972d702599b5a770604c7277999",
+    "civic-telemetry-mark.svg": "14ab1e3854377cad80ce960c1f250dd96e669f6874fa849ac7deb4edc9c3e3f8",
+    "congress.css": "fda9d90007dac23c45ff1cfaddbc3a280f99f8d1ca04e934e03a5dfa88127a73",
+    "congress.js": "2571b8f7039a7dfa2484970d88c371d596400e09287a239a1397d618aec3f4d2",
+    "coverage.json": "88f75bcbea34120ff24de46f2a5b5f9e357aff5d0cf392fc722f4bd5c8282243",
+    "data.json": "54787117e453dd9ad063ec3d66482347b3120409605a96e1e9f12309507ca3c8",
+    "delivery-audit.css": "574b0f20a4df65a1302af979a2decf7ef0f82e7b221f51045c5af02e292cc47c",
+    "delivery-audit.js": "1b706bf8421c2a24956f753eb1334ee1863977b6a6203dcdc6f15876e2be76ee",
+    "edition.txt": "1d79224c9433b55ddb83b7f54c24f7e9d90e3c3dab86ff374f93aee27158389e",
+    "election-context.js": "cee15b516cde1cf2f4d50191570b355c3851519284da9aa3159b2d4b5ac2cf20",
+    "favicon.ico": "31c65d550340dc809364721099a8dfbca58154be1a6ad0c39428671b11af679a",
+    "index.html": "5bbceeacfd8f4877fc3010f72668b80e0dcdfe620f857267b13b7f9083746426",
+    "national.css": "bbf5957df6ae125e2593d663d22afdec5fabf981fca1cfffa31567ae5f2fe9e9",
+    "national.js": "451b056a87a872911f8378e84e6ef9cb08795dc4c235fe0cbf01e850f1781228",
+    "notes.md": "dd62d6acc645bfbfc9d52e1dec3c59eab39403c8bb09c29ee223460c974f46a9",
+    "reporting-transparency.css": "2e359dcfc43025fc537c793596ed7f6d9490946e0162086164edaa14fd7bb316",
+    "reporting-transparency.js": "7a7e82f410fb781713e89a671b880c7b3689b210e90d1519eb81dd95fd033cad",
+    "reporting-transparency.json": "b71e912f2796af6f008ac8cd7840161b4d8e90dff0f2c48d9891a9676dd13019",
+    "returns.css": "1e22f66f4881124a17a64fa4f60d8984262c643084a7380a6c7d1aab02717efd",
+    "returns.js": "3cc9ffad2052e2272b90d4032c3ecdfaf4509e77858c99e9a1a5e27cc6ac290d",
+    "snapshot.png": "fcaf5ebf44e4757cc2be738a9051d4f17347495539f3d34ef4008c589f34e5a8",
+    "styles.css": "042c59744ea0904192193002f1c51842431e6e7089fb774ee9cefcaeee3fb8d7",
+    "texas-heritage.svg": "5b6161063945d6a4ccd44c71f17447f0cbcdb4ed1ad273692bdbc68fce0d18b6",
+    "us-congress-emblem.svg": "0c52bd196767815aaf04818601681c1b1601eb933848b736d1b18610f71bde56"
+  }
+}
